@@ -1,0 +1,133 @@
+.text-color{
+    color: #ffffff;
+}
+
+.header-bg{
+    background-color: #38529A;
+}
+
+.btn:hover {
+    color: #76a8fa;
+    transition: .4s;
+}
+
+/**************Top main manu section***************/
+#top_main_manu_section{
+    background-color: #76a8fa;
+}
+
+.top_main_manu_section_button_color{
+    background-color: #21304d;
+}
+
+.top_main_manu_section_button_text{
+    font-size: 30px;
+}
+
+
+/**************Table Token Section**************/
+.token_bg{
+    background-color: #21304d;
+}
+
+.table_bg{
+    background-color: #21304d;
+}
+
+.digit_bg{
+    background-color: #21304d;
+}
+
+.digit_size{
+    font-size: 30px;
+}
+
+
+/**************bottom main manu section***************/
+#bottom_main_manu_section{
+    background-color: #00638c;
+}
+
+.bottom_main_manu_section_button_color{
+    background-color: #21304d;
+}
+
+.bottom_main_manu_section_button_text{
+    font-size: 30px;
+}
+
+
+/***********Product table display***************/
+
+.product_table_display{
+    height: 20em;
+    overflow: auto;
+}
+
+.product_table_display_header_bg{
+    background-color: #38529A;
+}
+
+
+/*************Category************************/
+
+.category_name_list{
+    height: 30%;
+    overflow-y: scroll;
+}
+
+.category_name_bg{
+    background-color:  #21304d;
+}
+.category_name_bg:hover{
+    background-color: #38529A;
+}
+
+.category_name_bg > p{
+    font-size: 20px;
+}
+
+.food_name_list{
+    background-color: rgba(234, 234, 234, 0.62);
+    margin-top: 20px;
+    height: 45%;
+    overflow-y: scroll;
+}
+
+.food_name_bg{
+    background-color: #38529A;
+    transition: .4s;
+}
+.food_name_bg:hover{
+    background-color: #21304d;
+    transition: .4s;
+}
+
+.goto_button{
+    position: absolute;
+    top: 80%;
+}
+
+
+/***********Payment Method***********/
+.payment_method{
+    width: 24%;
+    border-radius: 10px;
+}
+
+.payment_method_bg{
+    background-color: #00638c;
+}
+
+.payment_method_bg:hover{
+    background-color: #21304d;
+    transition: .4s;
+}
+
+.cash_receive_section{
+    background-color: rgba(187, 187, 187, 0.48);
+}
+
+.bill_options_btn_bg{
+    background-color: #21304d;
+}

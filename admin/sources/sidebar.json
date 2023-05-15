@@ -1,0 +1,112 @@
+[
+    {
+        "name":"Dashboard",
+        "icon":"icon-home4",
+        "link":"index.php"
+    },
+    {
+        "name":"POS",
+        "icon":"icon-printer4",
+        "link":"pos_index.html"
+    },
+    {
+        "name":"Customer",
+        "icon":"icon-users2",
+        "subnav":[
+            {
+                "name":"Add Customer",
+                "link":"add_customer.html"
+            },
+            {
+                "name":"Customers",
+                "link":"customers.html"
+            }
+        ]
+    },
+    {
+        "name":"Category",
+        "icon":"icon-list",
+        "subnav":[
+            {
+                "name":"Add Categorey",
+                "link":"add_category.html"
+            },
+            {
+                "name":"Categories",
+                "link":"categories.html"
+            }
+        ]
+    },
+    {
+        "name":"Outdoor Place",
+        "icon":"icon-exit3",
+        "subnav":[
+            {
+                "name":"Add Outdoor Place",
+                "link":"add_outdoor_place.html"
+            },
+            {
+                "name":"Outdoors",
+                "link":"outdoor_places.html"
+            }
+        ]
+    },
+    {
+        "name":"Orders",
+        "icon":"icon-compose",
+        "subnav":[
+            {
+                "name":"Add Order",
+                "link":"add_order.html"
+            },
+            {
+                "name":"Orders",
+                "link":"orders.html"
+            }
+        ]
+    },
+    {
+        "name":"Settings",
+        "icon":"icon-cogs",
+        "subnav":[
+            {
+                "name":"Add User",
+                "link":"add_user.html"
+            },
+            {
+                "name":"Users",
+                "link":"users.html"
+            },
+            {
+                "name":"User Roles",
+                "link":"user_roles.html"
+            },
+            {
+                "name":"Permitions",
+                "link":"premishions.html"
+            }
+        ]
+    },
+    {
+        "name":"App configuration",
+        "icon":"icon-android",
+        "subnav":[
+            {
+                "name":"App Config",
+                "link":"app_config.html"
+            },
+            {
+                "name":"Banner Images",
+                "link":"banner_images.html"
+            },
+            {
+                "name":"Privecy And Policy Page",
+                "link":"privecy_policy_page_setup.html"
+            },
+            {
+                "name":"About Page",
+                "link":"index.html"
+            }
+        ]
+    }
+]
