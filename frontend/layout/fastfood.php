@@ -1,14 +1,7 @@
 <?php include_once($_SERVER['DOCUMENT_ROOT']).'/'.'collage_canteen'.'/'.'config.php';
-$fastFoodItems = [
-  ['img'=>'chicken_sand.jpg','name'=>'Chicken Sandwich','price'=>'150 tk'],
-  ['img'=>'classic_chicken_cheese_burger.jpg','name'=>'Chicken Cheese Burger','price'=>'250 tk'],
-  ['img'=>'fried_chicken.jpg','name'=>'Fried Chicken','price'=>'150 tk'],
-  ['img'=>'grilld chicken.jpg','name'=>'Grilled Chicken','price'=>'120 tk'],
-  ['img'=>'meat.jpg','name'=>'Meat Box','price'=>'350 tk'],
-  ['img'=>'supreme-pizza.jpg','name'=>'Supreme Pizza','price'=>'600 tk'],
-  ['img'=>'pizz_bbq.jpg','name'=>'BBQ Pizza','price'=>'750 tk'],
-  ['img'=>'Potato-Wedges.jpg','name'=>'Potato Wedges','price'=>'130 tk']
-];
+$fastFoodJson = file_get_contents($frontEndSources.'fastfood.json');
+$fastFoodItems = json_decode($fastFoodJson);
+
 include_once($frontEndElement.'card.php');
 $fastFood =new Foods;
 ?>

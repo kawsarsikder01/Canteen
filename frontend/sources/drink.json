@@ -1,0 +1,42 @@
+[
+    {
+        "img": "mango.jpg",
+        "name": "Mango Juice",
+        "price": 250
+    },
+    {
+        "img": "pineapple.jpg",
+        "name": "Pineapple Juice",
+        "price": 180
+    },
+    {
+        "img": "lemon-drink.jpg",
+        "name": "Lemon Drink",
+        "price": 80
+    },
+    {
+        "img": "orange.jpg",
+        "name": "Orange Juice",
+        "price": 120
+    },
+    {
+        "img": "7up-.webp",
+        "name": "7UP",
+        "price": 60
+    },
+    {
+        "img": "cheerwine-drink.jpg",
+        "name": "Cheerwine Drink",
+        "price": 175
+    },
+    {
+        "img": "cocacola.jpeg",
+        "name": "Cocacola",
+        "price": 75
+    },
+    {
+        "img": "sprite.jpg",
+        "name": "Sprite",
+        "price": 60
+    }
+]

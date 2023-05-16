@@ -1,14 +1,7 @@
 <?php include_once($_SERVER['DOCUMENT_ROOT']).'/'.'collage_canteen'.'/'.'config.php';
-$bakeryItems = [
-  ['img'=>'cake.jpeg','name'=>'Cake','price'=>'785 tk'],
-  ['img'=>'italian-bread.webp','name'=>'Italian Bread','price'=>'120 tk'],
-  ['img'=>'breads_pies.jpg','name'=>'Bread Pie','price'=>'75 tk'],
-  ['img'=>'jera-biscuit.webp','name'=>'Jera Biscuits','price'=>'110 tk'],
-  ['img'=>'plain-bread.png','name'=>'Plain Bread','price'=>'65 tk'],
-  ['img'=>'plain-cake.jpg','name'=>'Plain Cake','price'=>'125 tk'],
-  ['img'=>'pound-cake.jpg','name'=>'Pound Cake','price'=>'160 tk'],
-  ['img'=>'Til-Toast.jpg','name'=>'Till Toast','price'=>'180 tk']
-];
+$bakeryJson = file_get_contents($frontEndSources.'bakery.json');
+$bakeryItems = json_decode($bakeryJson);
+
 include_once($frontEndElement.'card.php');
 $bakeryFood = new Foods;
 ?>

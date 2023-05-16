@@ -1,0 +1,30 @@
+[
+    {
+        "menu": "Home",
+        "link": "home-page.php"
+    },
+    {
+        "menu": "Menu",
+        "link": "menu.php"
+    },
+    {
+        "menu": "Categorey",
+        "link": "categorey.php"
+    },
+    {
+        "menu": "Reservation",
+        "link": "reservation.php"
+    },
+    {
+        "menu": "About",
+        "link": "about.php"
+    },
+    {
+        "menu": "Contact",
+        "link": "contact.php"
+    },
+    {
+        "menu": "Login",
+        "link": "login.php"
+    }
+]

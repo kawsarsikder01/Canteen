@@ -1,0 +1,42 @@
+[
+    {
+        "img": "chicken_sand.jpg",
+        "name": "Chicken Sandwich",
+        "price": 150
+    },
+    {
+        "img": "classic_chicken_cheese_burger.jpg",
+        "name": "Chicken Cheese Burger",
+        "price": 250
+    },
+    {
+        "img": "fried_chicken.jpg",
+        "name": "Fried Chicken",
+        "price": 150
+    },
+    {
+        "img": "grilld chicken.jpg",
+        "name": "Grilled Chicken",
+        "price": 120
+    },
+    {
+        "img": "meat.jpg",
+        "name": "Meat Box",
+        "price": 350
+    },
+    {
+        "img": "supreme-pizza.jpg",
+        "name": "Supreme Pizza",
+        "price": 600
+    },
+    {
+        "img": "pizz_bbq.jpg",
+        "name": "BBQ Pizza",
+        "price": 750
+    },
+    {
+        "img": "Potato-Wedges.jpg",
+        "name": "Potato Wedges",
+        "price": 130
+    }
+]

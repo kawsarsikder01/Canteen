@@ -1,0 +1,26 @@
+[
+    {
+        "item": "manage my account",
+        "link": "index.php"
+    },
+    {
+        "item": "my orders",
+        "link": "index.php"
+    },
+    {
+        "item": "My Reviews",
+        "link": "index.php"
+    },
+    {
+        "item": "My Returns & Cancellation",
+        "link": "index.php"
+    },
+    {
+        "item": "shipping address",
+        "link": "shipping_address.php"
+    },
+    {
+        "item": "Logout",
+        "link": "index.php"
+    }
+]

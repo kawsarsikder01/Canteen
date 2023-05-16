@@ -1,14 +1,7 @@
 <?php include_once($_SERVER['DOCUMENT_ROOT']).'/'.'collage_canteen'.'/'.'config.php';
-$drinkItems = [
-  ['img'=>'mango.jpg','name'=>'Mango Juice','price'=>'250 tk'],
-  ['img'=>'pineapple.jpg','name'=>'Pineapple Juice','price'=>'180 tk'],
-  ['img'=>'lemon-drink.jpg','name'=>'Lemon Drink','price'=>'80 tk'],
-  ['img'=>'orange.jpg','name'=>'Orange Juice','price'=>'120 tk'],
-  ['img'=>'7up-.webp','name'=>'7UP','price'=>'60 tk'],
-  ['img'=>'cheerwine-drink.jpg','name'=>'Cheerwine Drink','price'=>'175 tk'],
-  ['img'=>'cocacola.jpeg','name'=>'Cocacola','price'=>'75 tk'],
-  ['img'=>'sprite.jpg','name'=>'Sprite','price'=>'80 tk']
-];
+$drinkItemJson = file_get_contents($frontEndSources.'drink.json');
+$drinkItems = json_decode($drinkItemJson);
+
 include_once($frontEndElement.'card.php');
 $drinks = new Foods;
 

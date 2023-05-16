@@ -1,34 +1,22 @@
 
 <?php
-$navMenus = [
-  ['menu'=>'Home','link'=>'home-page.php'],
-  ['menu'=>'Menu','link'=>'menu.php'],
-  ['menu'=>'Categorey','link'=>'categorey.php'],
-  ['menu'=>'Reservation','link'=>'reservation.php'],
-  ['menu'=>'About','link'=>'about.php'],
-  ['menu'=>'Contact','link'=>'contact.php'],
-  ['menu'=>'Login','link'=>'login.php']
-];
+include_once($_SERVER['DOCUMENT_ROOT']).'/'.'collage_canteen'.'/'.'config.php';
 
-$icons = [
-  ['icon'=>'fa fa-shopping-cart','btn'=>'shopping-cart'],
-  ['icon'=>'fa fa-user','btn'=>'users']
-];
-$cartItems = [
-  ['img'=>'meat.jpg','cart_item'=>'cart item 01','price'=>'350 tk'],
-  ['img'=>'grilld chicken.jpg','cart_item'=>'cart item 02','price'=>'120 tk'],
-  ['img'=>'fried_chicken.jpg','cart_item'=>'cart item 03','price'=>'150 tk'],
-  ['img'=>'chicken_sand.jpg','cart_item'=>'cart item 04','price'=>'150 tk'],
+$iconJson = file_get_contents($frontEndSources.'menu_icon.json');
+$icons = json_decode($iconJson);
+$menuJson = file_get_contents($frontEndSources.'menu.json');
+$menuItems = json_decode($menuJson);
+$userJson = file_get_contents($frontEndSources.'user_dashboard.json');
+$userDashboardItems = json_decode($userJson);
+
+// $cartItems = [
+//   ['img'=>'meat.jpg','cart_item'=>'cart item 01','price'=>'350 tk'],
+//   ['img'=>'grilld chicken.jpg','cart_item'=>'cart item 02','price'=>'120 tk'],
+//   ['img'=>'fried_chicken.jpg','cart_item'=>'cart item 03','price'=>'150 tk'],
+//   ['img'=>'chicken_sand.jpg','cart_item'=>'cart item 04','price'=>'150 tk'],
  
-];
-$userDashboardItems = [
-  ['item'=>'manage my account','link'=>'index.php'],
-  ['item'=>'my orders','link'=>'index.php'],
-  ['item'=>'My Reviews','link'=>'index.php'],
-  ['item'=>'My Returns & Cancellation','link'=>'index.php'],
-  ['item'=>'shipping address','link'=>'shipping_address.php'],
-  ['item'=>'Logout','link'=>'index.php']
-];
+// ];
+
 echo '<header class="header">
 <nav class="navbar navbar-expand-lg bg-body-tertiary  bg-dark"data-bs-theme="dark">
   <div class="container my-2">
@@ -40,15 +28,15 @@ echo '<header class="header">
     <ul class="navbar-nav ms-auto me-5 mb-lg-0">
     ';
 
-foreach($navMenus as $navMenu){
+foreach($menuItems as $menuItem){
         echo '<li class="nav-item">
-        <a class="nav-link " href="'.$navMenu['link'].'">'.$navMenu['menu'].'</a>
+        <a class="nav-link " href="'.$menuItem->link.'">'.$menuItem->menu.'</a>
       </li>'
       ;
 }
 echo '</ul>';
 foreach($icons as $icon){
-  echo '<a href="#" class="btn btn-info shopping '.$icon['btn'].' mx-4"><i class="'.$icon['icon'].' text-light"></i></a>';
+  echo '<a href="#" class="btn btn-info shopping '.$icon->btn.' mx-4"><i class="'.$icon->icon.' text-light"></i></a>';
 }
 echo '<form class="d-flex" role="search">
 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

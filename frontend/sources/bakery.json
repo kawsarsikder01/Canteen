@@ -1,0 +1,42 @@
+[
+    {
+        "img": "cake.jpeg",
+        "name": "Cake",
+        "price": 785 
+    },
+    {
+        "img": "italian-bread.webp",
+        "name": "Italian Bread",
+        "price": 120 
+    },
+    {
+        "img": "breads_pies.jpg",
+        "name": "Bread Pie",
+        "price": 75
+    },
+    {
+        "img": "jera-biscuit.webp",
+        "name": "Jera Biscuits",
+        "price": 110
+    },
+    {
+        "img": "plain-bread.png",
+        "name": "Plain Bread",
+        "price": 65
+    },
+    {
+        "img": "plain-cake.jpg",
+        "name": "Plain Cake",
+        "price": 125
+    },
+    {
+        "img": "pound-cake.jpg",
+        "name": "Pound Cake",
+        "price": 160
+    },
+    {
+        "img": "Til-Toast.jpg",
+        "name": "Till Toast",
+        "price": 180
+    }
+]

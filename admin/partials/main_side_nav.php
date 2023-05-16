@@ -37,7 +37,12 @@
     <?php
 
 	foreach($navItems as $navItem){
-		echo "<li class='nav-item".(isset($navItem->subnav)? 'nav-item-submenu':'')."'>";
+		echo "<li class='nav-item  ";
+		if(isset($navItem->subnav)){
+			echo "nav-item-submenu '>";
+		}else{
+			echo " '> ";
+		}
 		if(isset($navItem->link)){
 			echo "<a href='{$navItem->link}'class='nav-link'><i class='{$navItem->icon}'></i>
 			<span>{$navItem->name}</span></a>";

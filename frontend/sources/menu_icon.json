@@ -1,0 +1,10 @@
+[
+    {
+        "icon": "fa fa-shopping-cart",
+        "btn": "shopping-cart"
+    },
+    {
+        "icon": "fa fa-user",
+        "btn": "users"
+    }
+]

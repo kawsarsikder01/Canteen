@@ -1,0 +1,42 @@
+[
+    {
+        "img":"chicken_sand.jpg",
+        "name":"Chicken Sandwich",
+        "price":150
+    },
+    {
+        "img":"mango.jpg",
+        "name":"Mango Juice",
+        "price":250
+    },
+    {
+        "img":"fried_chicken.jpg",
+        "name":"Fried Chicken",
+        "price":150
+    },
+    {
+        "img":"pound-cake.jpg",
+        "name":"Pound Cake",
+        "price":80
+    },
+    {
+        "img":"pizz_bbq.jpg",
+        "name":"BBQ Pizza",
+        "price":150
+    },
+    {
+        "img":"cheerwine-drink.jpg",
+        "name":"Cheerwine Drink",
+        "price":175
+    },
+    {
+        "img":"orange.jpg",
+        "name":"Orange Juice",
+        "price":120
+    },
+    {
+        "img":"plain-bread.png",
+        "name":"Plain Bread",
+        "price":110
+    }
+]
