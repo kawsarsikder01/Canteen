@@ -12,6 +12,7 @@
 	<link href="assets/css/layout.min.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/components.min.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/colors.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="assets/css/customer_view.css">
 	<!-- /global stylesheets -->
 
 	<!-- Core JS files -->
@@ -41,4 +42,5 @@
 	<script src="../../../../global_assets/js/demo_charts/pages/dashboard/light/pies.js"></script>
 	<script src="../../../../global_assets/js/demo_charts/pages/dashboard/light/bullets.js"></script>
 	<!-- /theme JS files -->
+	<script src="../../../../global_assets/js/demo_pages/datatables_basic.js"></script>
 </head>

@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.customer-details{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: aqua;
+    width:80%;
+    margin:auto;
+    height:70vh;
+}
+.details h3{
+ font-size: 30px;
+ letter-spacing: 1px;
+ color:#222;
+ padding:10px;
+}
+.details p{
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color:#222;
+    padding:10px;
+   }

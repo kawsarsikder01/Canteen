@@ -1,0 +1,89 @@
+[
+    {
+        "id":1,
+        "img":"chicken_sand.jpg",
+        "name":"Chicken Sandwich",
+        "price":150,
+        "category":"Fast Food",
+        "status":"Active",
+        "outdoor":"Enabled",
+        "esale":"Enabled",
+        "type":"Food"
+    },
+    {
+        "id":2,
+        "img":"mango.jpg",
+        "name":"Mango Juice",
+        "price":250,
+        "category":"Drink",
+        "status":"Active",
+        "outdoor":"Enabled",
+        "esale":"Enabled",
+        "type":"Food"
+    },
+    {
+        "id":3,
+        "img":"fried_chicken.jpg",
+        "name":"Fried Chicken",
+        "price":150,
+        "category":"Fast Food",
+        "status":"Active",
+        "outdoor":"Enabled",
+        "esale":"Enabled",
+        "type":"Food"
+    },
+    {
+        "id":4,
+        "img":"pound-cake.jpg",
+        "name":"Pound Cake",
+        "price":80,
+        "category":"Bakery",
+        "status":"Active",
+        "outdoor":"Enabled",
+        "esale":"Enabled",
+        "type":"Food"
+    },
+    {
+        "id":5,        "img":"pizz_bbq.jpg",
+        "name":"BBQ Pizza",
+        "price":150,
+        "category":"Fast Food",
+        "status":"Active",
+        "outdoor":"Enabled",
+        "esale":"Enabled",
+        "type":"Food"
+    },
+    {
+        "id":6,
+        "img":"cheerwine-drink.jpg",
+        "name":"Cheerwine Drink",
+        "price":175,
+        "category":"Drink",
+        "status":"Active",
+        "outdoor":"Enabled",
+        "esale":"Enabled",
+        "type":"Food"
+    },
+    {
+        "id":7,
+        "img":"orange.jpg",
+        "name":"Orange Juice",
+        "price":120,
+        "category":"Drink",
+        "status":"Active",
+        "outdoor":"Enabled",
+        "esale":"Enabled",
+        "type":"Food"
+    },
+    {
+        "id":8,
+        "img":"plain-bread.png",
+        "name":"Plain Bread",
+        "price":110,
+        "category":"Bakery",
+        "status":"Active",
+        "outdoor":"Enabled",
+        "esale":"Enabled",
+        "type":"Food"
+    }
+]
