@@ -550,7 +550,7 @@ $customers = json_decode($customersJson);
                         <td><?=$customer->address?></td>
                         <td><?=$customer->phone?></td>
                         <td><?=$customer->email?></td>
-                        <td><span class="badge badge-success"><?=$customer->status?></span></td>
+                        <td><span class="badge badge-success">Active</span></td>
                         <td class="text-center">
                             <div class="d-flex  ">
                                 <a href="customer_View.php?id=<?=$customer->id?>" class="btn btn-success btn-sm">View</a>
@@ -581,7 +581,7 @@ $customers = json_decode($customersJson);
 
             <div class="navbar-collapse collapse" id="navbar-footer">
 					<span class="navbar-text">
-						&copy; 2022 - 2023 <a href="#">Campus Canteen</a> by <a href="https://github.com/Prince-Costa" target="_blank">Prince Costa</a>
+						&copy; 2022 - 2023 <a href="#">Campus Canteen</a> by <a href="https://github.com/Prince-Costa" target="_blank">Kawsar Sikder</a>
 					</span>
 
                 <ul class="navbar-nav ml-lg-auto">

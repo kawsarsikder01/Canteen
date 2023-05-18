@@ -1,0 +1,32 @@
+[
+    {
+        "id":1,
+        "name":"Kawsar Sikder",
+        "username":"kawsar@01",
+        "img":"https://thumbs.dreamstime.com/b/male-avatar-icon-flat-style-male-user-icon-cartoon-man-avatar-hipster-vector-stock-91462914.jpg",
+        "address":"Gazipur",
+        "phone":"0199**02171",
+        "email":"demo@gmail.com",
+        "passwoard":"*******"
+    },
+    {
+        "id":2,
+        "name":"Aura",
+        "username":"aura@01",
+        "img":"https://thumbs.dreamstime.com/b/male-avatar-icon-flat-style-male-user-icon-cartoon-man-avatar-hipster-vector-stock-91462914.jpg",
+        "address":"Gazipur",
+        "phone":"0199**02171",
+        "email":"demo@gmail.com",
+        "passwoard":"*******"
+    },
+    {
+        "id":3,
+        "name":"Shanto",
+        "username":"shanto@01",
+        "img":"https://thumbs.dreamstime.com/b/male-avatar-icon-flat-style-male-user-icon-cartoon-man-avatar-hipster-vector-stock-91462914.jpg",
+        "address":"Gazipur",
+        "phone":"0199**02171",
+        "email":"demo@gmail.com",
+        "passwoard":"*******"
+    }
+]

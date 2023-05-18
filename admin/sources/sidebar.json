@@ -22,6 +22,21 @@
                 "link":"customers.html"
             }
         ]
+    }
+    ,
+    {
+        "name":"Product",
+        "icon":"icon-basket",
+        "subnav":[
+            {
+                "name":"Add Product",
+                "link":"add_product.php"
+            },
+            {
+                "name":"Products",
+                "link":"products.php"
+            }
+        ]
     },
     {
         "name":"Category",

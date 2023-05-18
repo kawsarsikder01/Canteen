@@ -503,7 +503,6 @@ $products = json_decode($productsJson);
         </div>
         <!-- /page header -->
 
-
         <!-- Content area -->
         <div class="content">
             <div class="card mt-3">
@@ -529,11 +528,12 @@ $products = json_decode($productsJson);
                         <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="First Name: activate to sort column descending">Name</th>
                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Last Name: activate to sort column ascending">Image</th>
                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Last Name: activate to sort column ascending">Category</th>
-                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Job Title: activate to sort column ascending">Price</th>
+                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Job Title: activate to sort column ascending">Cost Price</th>
                         
+                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">Sell Price</th>
                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Job Title: activate to sort column ascending">E-sale</th>
                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Job Title: activate to sort column ascending">Outdore</th>
-                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">Status</th>
+                       
                         <th class="text-center sorting_disabled" rowspan="1" colspan="1" aria-label="Actions" style="width: 100px;">Actions</th></tr>
                     </thead>
                     <tbody>
@@ -546,11 +546,12 @@ $products = json_decode($productsJson);
                             <img src="../../../../global_assets/images/<?=$product->img?>" alt="Image of biscuit" style="height:100px; width: 100%;">
                         </td>
                         <td><?=$product->category?></td>
-                        <td>tk <?=$product->price?></td>
+                        <td>Tk <?=$product->costPrice?></td>
                         
-                        <td><span class="badge badge-success"><?=$product->esale?></span></td>
-                        <td><span class="badge badge-success"><?=$product->outdoor?></span></td>
-                        <td><span class="badge badge-success"><?=$product->status?></span></td>
+                        <td><span>Tk <?=$product->sellPrice?></span></td>
+                        <td><span class="badge badge-success"><?php if(isset($product->esale)){ echo "Enabled"; }else{ echo "Disabled"; } ?></span></td>
+                        <td><span class="badge badge-success"><?php if(isset($product->outdoor)){ echo "Enabled"; }else{ echo "Disabled"; } ?></span></td>
+                        
                         <td class="text-center">
                             <div class="d-flex  ">
                                 <a href="product_view.php?id=<?=$product->id?>" class="btn btn-success btn-sm">View</a>
@@ -580,7 +581,7 @@ $products = json_decode($productsJson);
 
             <div class="navbar-collapse collapse" id="navbar-footer">
 					<span class="navbar-text">
-						&copy; 2022 - 2023 <a href="#">Campus Canteen</a> by <a href="https://github.com/Prince-Costa" target="_blank">Prince Costa</a>
+						&copy; 2022 - 2023 <a href="#">Campus Canteen</a> by <a href="https://github.com/Prince-Costa" target="_blank">Kawsar Sikder</a>
 					</span>
 
                 <ul class="navbar-nav ml-lg-auto">
