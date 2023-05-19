@@ -1,3 +1,11 @@
+<?php include_once($_SERVER['DOCUMENT_ROOT'].'/'.'collage_canteen'.'/'.'config.php');
+    $bannerImageJson = file_get_contents($adminSources.'banner.json');
+    $bannerImageData = json_decode($bannerImageJson);
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -500,18 +508,24 @@
         <div class="content">
             <div class="card p-3 gy-3">
                 <h3>Add Banner Image</h3>
-                <form action="">
+                <form action="bannerImage_controller.php" method="post">
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-2">Title<span class="text-danger">*</span></label>
+                        <div class="col-lg-10">
+                            <textarea type="text" name ="title"  class="form-control"></textarea>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2">Content<span class="text-danger">*</span></label>
                         <div class="col-lg-10">
-                            <textarea type="text" class="form-control"></textarea>
+                            <textarea type="text" name = "caption" class="form-control"></textarea>
                         </div>
-                        </div>
+                    </div>
         
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2">Banner Image</label>
                         <div class="col-lg-10">
-                            <div class="uniform-uploader"><input type="file" class="form-control-uniform" data-fouc=""><span class="filename" style="user-select: none;">No file selected</span><span class="action btn btn-light legitRipple" style="user-select: none;">Choose File</span></div>
+                            <div class="uniform-uploader"><input type="file" name ="img" class="form-control-uniform" data-fouc=""><span class="filename" style="user-select: none;">No file selected</span><span class="action btn btn-light legitRipple" style="user-select: none;">Choose File</span></div>
                         </div>
                     </div>
 
@@ -526,12 +540,15 @@
             <div class="card p-3">
                 <h3>Banner Images</h3>
                 <div class="row mx-auto">
+
+                <?php foreach($bannerImageData as $bannerImage){ ?>
                     <div class="col-md-6">
                         <div class="card">
 						    <div class="card-img-actions">
-								<img class="img-fluid w-100" src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="">
+                                
+								<img class=" w-100" src="../../../../global_assets/images/placeholders/<?=$bannerImage->img?> " height="300px"alt="">
 								<div class="card-img-actions-overlay">
-									<a href="../../../../global_assets/images/placeholders/placeholder.jpg" class="btn btn-outline bg-white text-white border-white border-2 legitRipple" data-popup="lightbox">
+									<a href="../../../../global_assets/images/placeholders/<?=$bannerImage->img?>" class="btn btn-outline bg-white text-white border-white border-2 legitRipple" data-popup="lightbox">
 										Preview
 									</a>
 									<a href="#" class="btn btn-outline bg-white text-white border-white border-2 ml-2 legitRipple">
@@ -541,8 +558,8 @@
 							</div>
 
                             <div class="card-body">
-								<h5 class="card-title">Middle placement</h5>
-								<p class="card-text">Example of <code>middle</code> placement - image placed between card content containers (card header, card body and card footer). Image requires <code>.img-fluid</code> class for proper sizing.</p>
+								<h5 class="card-title"><?=$bannerImage->title?></h5>
+								<p class="card-text"><?=$bannerImage->caption?></p>
 							</div>
 
 							<div class="card-footer d-flex justify-content-between align-items-center">
@@ -554,146 +571,8 @@
 							</div>
 						</div>   
                     </div>
-                    <div class="col-md-6">
-                        <div class="card">
-						    <div class="card-img-actions">
-								<img class="img-fluid w-100" src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="">
-								<div class="card-img-actions-overlay">
-									<a href="../../../../global_assets/images/placeholders/placeholder.jpg" class="btn btn-outline bg-white text-white border-white border-2 legitRipple" data-popup="lightbox">
-										Preview
-									</a>
-									<a href="#" class="btn btn-outline bg-white text-white border-white border-2 ml-2 legitRipple">
-										Details
-									</a>
-								</div>
-							</div>
-
-                            <div class="card-body">
-								<h5 class="card-title">Middle placement</h5>
-								<p class="card-text">Example of <code>middle</code> placement - image placed between card content containers (card header, card body and card footer). Image requires <code>.img-fluid</code> class for proper sizing.</p>
-							</div>
-
-							<div class="card-footer d-flex justify-content-between align-items-center">
-								<span class="font-size-sm text-uppercase font-weight-semibold">Nov 12, 11:25 am</span>
-								<span class="font-size-sm text-uppercase text-success font-weight-semibold">
-                                    <a href="" class="btn btn-info btn-sm">Edit</a>
-                                    <a href="" class="btn btn-danger btn-sm">Delete</a>
-                                </span>
-							</div>
-						</div>   
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card">
-						    <div class="card-img-actions">
-								<img class="img-fluid w-100" src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="">
-								<div class="card-img-actions-overlay">
-									<a href="../../../../global_assets/images/placeholders/placeholder.jpg" class="btn btn-outline bg-white text-white border-white border-2 legitRipple" data-popup="lightbox">
-										Preview
-									</a>
-									<a href="#" class="btn btn-outline bg-white text-white border-white border-2 ml-2 legitRipple">
-										Details
-									</a>
-								</div>
-							</div>
-
-                            <div class="card-body">
-								<h5 class="card-title">Middle placement</h5>
-								<p class="card-text">Example of <code>middle</code> placement - image placed between card content containers (card header, card body and card footer). Image requires <code>.img-fluid</code> class for proper sizing.</p>
-							</div>
-
-							<div class="card-footer d-flex justify-content-between align-items-center">
-								<span class="font-size-sm text-uppercase font-weight-semibold">Nov 12, 11:25 am</span>
-								<span class="font-size-sm text-uppercase text-success font-weight-semibold">
-                                    <a href="" class="btn btn-info btn-sm">Edit</a>
-                                    <a href="" class="btn btn-danger btn-sm">Delete</a>
-                                </span>
-							</div>
-						</div>   
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card">
-						    <div class="card-img-actions">
-								<img class="img-fluid w-100" src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="">
-								<div class="card-img-actions-overlay">
-									<a href="../../../../global_assets/images/placeholders/placeholder.jpg" class="btn btn-outline bg-white text-white border-white border-2 legitRipple" data-popup="lightbox">
-										Preview
-									</a>
-									<a href="#" class="btn btn-outline bg-white text-white border-white border-2 ml-2 legitRipple">
-										Details
-									</a>
-								</div>
-							</div>
-
-                            <div class="card-body">
-								<h5 class="card-title">Middle placement</h5>
-								<p class="card-text">Example of <code>middle</code> placement - image placed between card content containers (card header, card body and card footer). Image requires <code>.img-fluid</code> class for proper sizing.</p>
-							</div>
-
-							<div class="card-footer d-flex justify-content-between align-items-center">
-								<span class="font-size-sm text-uppercase font-weight-semibold">Nov 12, 11:25 am</span>
-								<span class="font-size-sm text-uppercase text-success font-weight-semibold">
-                                    <a href="" class="btn btn-info btn-sm">Edit</a>
-                                    <a href="" class="btn btn-danger btn-sm">Delete</a>
-                                </span>
-							</div>
-						</div>   
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card">
-						    <div class="card-img-actions">
-								<img class="img-fluid w-100" src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="">
-								<div class="card-img-actions-overlay">
-									<a href="../../../../global_assets/images/placeholders/placeholder.jpg" class="btn btn-outline bg-white text-white border-white border-2 legitRipple" data-popup="lightbox">
-										Preview
-									</a>
-									<a href="#" class="btn btn-outline bg-white text-white border-white border-2 ml-2 legitRipple">
-										Details
-									</a>
-								</div>
-							</div>
-
-                            <div class="card-body">
-								<h5 class="card-title">Middle placement</h5>
-								<p class="card-text">Example of <code>middle</code> placement - image placed between card content containers (card header, card body and card footer). Image requires <code>.img-fluid</code> class for proper sizing.</p>
-							</div>
-
-							<div class="card-footer d-flex justify-content-between align-items-center">
-								<span class="font-size-sm text-uppercase font-weight-semibold">Nov 12, 11:25 am</span>
-								<span class="font-size-sm text-uppercase text-success font-weight-semibold">
-                                    <a href="" class="btn btn-info btn-sm">Edit</a>
-                                    <a href="" class="btn btn-danger btn-sm">Delete</a>
-                                </span>
-							</div>
-						</div>   
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card">
-						    <div class="card-img-actions">
-								<img class="img-fluid w-100" src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="">
-								<div class="card-img-actions-overlay">
-									<a href="../../../../global_assets/images/placeholders/placeholder.jpg" class="btn btn-outline bg-white text-white border-white border-2 legitRipple" data-popup="lightbox">
-										Preview
-									</a>
-									<a href="#" class="btn btn-outline bg-white text-white border-white border-2 ml-2 legitRipple">
-										Details
-									</a>
-								</div>
-							</div>
-
-                            <div class="card-body">
-								<h5 class="card-title">Middle placement</h5>
-								<p class="card-text">Example of <code>middle</code> placement - image placed between card content containers (card header, card body and card footer). Image requires <code>.img-fluid</code> class for proper sizing.</p>
-							</div>
-
-							<div class="card-footer d-flex justify-content-between align-items-center">
-								<span class="font-size-sm text-uppercase font-weight-semibold">Nov 12, 11:25 am</span>
-								<span class="font-size-sm text-uppercase text-success font-weight-semibold">
-                                    <a href="" class="btn btn-info btn-sm">Edit</a>
-                                    <a href="" class="btn btn-danger btn-sm">Delete</a>
-                                </span>
-							</div>
-						</div>   
-                    </div>
+                    <?php } ?>
+                   
                 </div>
             </div>
         </div>
@@ -711,7 +590,7 @@
 
             <div class="navbar-collapse collapse" id="navbar-footer">
 					<span class="navbar-text">
-						&copy; 2022 - 2023 <a href="#">Campus Canteen</a> by <a href="https://github.com/Prince-Costa" target="_blank">Prince Costa</a>
+						&copy; 2022 - 2023 <a href="#">Campus Canteen</a> by <a href="https://github.com/kawsarsikder01" target="_blank">Kawsar Sikder</a>
 					</span>
 
                 <ul class="navbar-nav ml-lg-auto">
