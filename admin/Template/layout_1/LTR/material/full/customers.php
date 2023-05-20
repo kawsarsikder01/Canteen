@@ -510,7 +510,7 @@ $customers = json_decode($customersJson);
             <div class="card mt-3">
                 <div class="card-header header-elements-inline">
                     <h5 class="card-title">Customers</h5>
-                    <a href="add_customer.html" class="btn btn-info legitRipple">Add Customer</a>
+                    <a href="add_customer.php" class="btn btn-info legitRipple">Add Customer</a>
                     <!-- <div class="header-elements">
                         <div class="list-icons">
                             <a class="list-icons-item" data-action="collapse"></a>
@@ -555,7 +555,10 @@ $customers = json_decode($customersJson);
                             <div class="d-flex  ">
                                 <a href="customer_View.php?id=<?=$customer->id?>" class="btn btn-success btn-sm">View</a>
                                 <a href="" class="btn btn-info btn-sm">Edit</a>
-                                <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                <form action="customer_delete.php" method="post">
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                <input type="hidden" name = "id" value="<?=$customer->id?>">
+                                </form>
                             </div>
                         </td>
                     </tr>
@@ -581,7 +584,7 @@ $customers = json_decode($customersJson);
 
             <div class="navbar-collapse collapse" id="navbar-footer">
 					<span class="navbar-text">
-						&copy; 2022 - 2023 <a href="#">Campus Canteen</a> by <a href="https://github.com/Prince-Costa" target="_blank">Kawsar Sikder</a>
+						&copy; 2022 - 2023 <a href="#">Campus Canteen</a> by <a href="https://github.com/kawsarsikder01" target="_blank">Kawsar Sikder</a>
 					</span>
 
                 <ul class="navbar-nav ml-lg-auto">

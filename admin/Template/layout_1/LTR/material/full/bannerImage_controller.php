@@ -20,16 +20,28 @@ if(isset($_POST['img'])){
 }else{
     $img = null;
 }
+foreach($bannerImageData as $bannerId){
+    $id[] = $bannerId->id;
+}
+$lastIndex = count($id)-1;
+$highestId = $id[$lastIndex];
+$currentId = $highestId+1;
 
     $data = [
-        "id"=>4,
+        "id"=>$currentId,
         "title"=>$title,
         "caption"=>$caption,
         "img"=>$img
     ];
     $bannerImageData[] = (object) $data;
     $dataEncode = json_encode($bannerImageData);
+    if(file_exists($adminSources.'banner.json')){
     $result = file_put_contents($adminSources.'banner.json',$dataEncode);
+    if($result){
+        location('banner_images.php');
+    }
+    }
+    
 
 
-    echo "<a href='banner_images.php'>Banner Image</a>";
+    // echo "<a href='banner_images.php'>Banner Image</a>";

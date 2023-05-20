@@ -565,8 +565,15 @@
 							<div class="card-footer d-flex justify-content-between align-items-center">
 								<span class="font-size-sm text-uppercase font-weight-semibold">Nov 12, 11:25 am</span>
 								<span class="font-size-sm text-uppercase text-success font-weight-semibold">
-                                    <a href="" class="btn btn-info btn-sm">Edit</a>
-                                    <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                <form action="banner_delete.php" class="d-inline" method="post" >
+                                    <button type="submit" class="btn btn-info btn-sm ">Edit</button>
+                                    <input type="hidden" name = "id" value = "">
+                                    </form>
+                                    <form action="banner_delete.php" class="d-inline" method="post" >
+                                    <button type="submit" class="btn btn-danger btn-sm ">Delete</button>
+                                    <input type="hidden" name = "id" value = "<?=$bannerImage->id?>">
+                                    </form>
+                                    
                                 </span>
 							</div>
 						</div>   

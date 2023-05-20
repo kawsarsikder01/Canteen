@@ -508,7 +508,7 @@ $products = json_decode($productsJson);
             <div class="card mt-3">
                 <div class="card-header header-elements-inline">
                     <h5 class="card-title">Products</h5>
-                    <a href="add_product.html" class="btn btn-info legitRipple">Add Product</a>
+                    <a href="add_product.php" class="btn btn-info legitRipple">Add Product</a>
                     <!-- <div class="header-elements">
                         <div class="list-icons">
                             <a class="list-icons-item" data-action="collapse"></a>
@@ -556,7 +556,11 @@ $products = json_decode($productsJson);
                             <div class="d-flex  ">
                                 <a href="product_view.php?id=<?=$product->id?>" class="btn btn-success btn-sm">View</a>
                                 <a href="" class="btn btn-info btn-sm">Edit</a>
-                                <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                <form action="product_delete.php" method="post">
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                <input type="hidden" name = "id" value="<?=$product->id?>">
+                                </form>
+                                
                             </div>
                         </td>
                     </tr>

@@ -10,6 +10,9 @@ function dd($var){
 d($var);
 die();
 }
+function location($url){
+    header("location:$url");
+}
 $webroot = "http://campus_canteen.test".'/';
 $docroot = $_SERVER['DOCUMENT_ROOT'];
 $partialAdmin = $docroot.'/'.'collage_canteen'.'/'.'admin'.'/'.'partials'.'/';
