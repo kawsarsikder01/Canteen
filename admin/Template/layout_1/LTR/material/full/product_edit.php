@@ -1,3 +1,20 @@
+<?php include_once($_SERVER['DOCUMENT_ROOT'].'/'.'collage_canteen'.'/'.'config.php');
+$id = $_POST['id'];
+$productsJson = file_get_contents($adminSources.'products.json');
+$products = json_decode($productsJson);
+$productEdit;
+foreach($products as $product){
+    if($product->id == $id){
+        $productEdit=$product;
+        break;
+    }
+}
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -499,47 +516,54 @@
         <div class="content">
             <h3>Add Product</h3>
 
-            <form action="product_controler.php" method="post">
+            <form action="product_edit_control.php" method="post">
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Name<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
-                        <input type="text" name="name" class="form-control" placeholder="Enter product name...">
+                        <input type="text" name="name" class="form-control" placeholder="Enter product name..." value="<?=$productEdit->name?>">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Type<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
-                        <input type="text"name="type" class="form-control" placeholder="Enter product type...">
+                        <input type="text"name="type" class="form-control" placeholder="Enter product type..." value="<?=$productEdit->type?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Category<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
-                        <input type="text"name="category" class="form-control" placeholder="Enter product category...">
+                        <input type="text"name="category" class="form-control" placeholder="Enter product category..." value="<?=$productEdit->category?>">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Description</label>
                     <div class="col-lg-10">
-                        <textarea type="text" name="description" class="form-control"></textarea>
+                        <textarea type="text" name="description" class="form-control"  value="<?=$productEdit->description?>"> </textarea> 
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Cost Price<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
-                        <input type="text"name="cost-price" class="form-control" placeholder="Enter product cost price...">
+                        <input type="text"name="cost-price" class="form-control" placeholder="Enter product cost price..." value="<?=$productEdit->costPrice?>">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Sell Price<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
-                        <input type="text" name="sell-price" class="form-control" placeholder="Enter product sell price...">
+                        <input type="text" name="sell-price" class="form-control" placeholder="Enter product sell price..." value="<?=$productEdit->sellPrice?>">
                     </div>
                 </div>
+                <div class="form-group row">
+                    
+                    <div class="col-lg-10">
+                        <input type="hidden" name="id" value="<?=$productEdit->id?>">
+                    </div>
+                </div>
+                
 
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Image</label>

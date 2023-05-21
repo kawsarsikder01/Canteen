@@ -3,6 +3,7 @@
 
 $productsJson = file_get_contents($adminSources.'products.json');
 $products = json_decode($productsJson);
+session_start();
 
 ?>
 
@@ -23,6 +24,7 @@ $products = json_decode($productsJson);
     <link href="assets/css/layout.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/components.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/colors.min.css" rel="stylesheet" type="text/css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"> -->
     <!-- /global stylesheets -->
 
     <!-- Core JS files -->
@@ -505,8 +507,17 @@ $products = json_decode($productsJson);
 
         <!-- Content area -->
         <div class="content">
-            <div class="card mt-3">
-                <div class="card-header header-elements-inline">
+            <?php 
+            // $message = flush_session('message');
+            if(array_key_exists('message',$_SESSION) && !empty($_SESSION['message'])):
+             ?>
+                    <div class="card mt-3">
+                        <div class="card-header header-elements">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?=$_SESSION['message'];$_SESSION['message']='';?>
+                       
+                    </div>
+                    <?php endif ?>
                     <h5 class="card-title">Products</h5>
                     <a href="add_product.php" class="btn btn-info legitRipple">Add Product</a>
                     <!-- <div class="header-elements">
@@ -555,7 +566,11 @@ $products = json_decode($productsJson);
                         <td class="text-center">
                             <div class="d-flex  ">
                                 <a href="product_view.php?id=<?=$product->id?>" class="btn btn-success btn-sm">View</a>
-                                <a href="" class="btn btn-info btn-sm">Edit</a>
+                                <form action="product_edit.php" method="post">
+                                <button type="submit" class="btn btn-info btn-sm">Edit</button>
+                                <input type="hidden" name = "id"value="<?=$product->id?>">
+                                </form>
+                                
                                 <form action="product_delete.php" method="post">
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                 <input type="hidden" name = "id" value="<?=$product->id?>">
@@ -585,7 +600,7 @@ $products = json_decode($productsJson);
 
             <div class="navbar-collapse collapse" id="navbar-footer">
 					<span class="navbar-text">
-						&copy; 2022 - 2023 <a href="#">Campus Canteen</a> by <a href="https://github.com/Prince-Costa" target="_blank">Kawsar Sikder</a>
+						&copy; 2022 - 2023 <a href="#">Campus Canteen</a> by <a href="https://github.com/kawsarsikder01" target="_blank">Kawsar Sikder</a>
 					</span>
 
                 <ul class="navbar-nav ml-lg-auto">
