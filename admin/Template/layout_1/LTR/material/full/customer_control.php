@@ -1,17 +1,28 @@
 <?php 
 
-include_once($_SERVER['DOCUMENT_ROOT'].'/'.'collage_canteen'.'/'.'config.php');
+include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
 $customersJson = file_get_contents($adminSources.'customers.json');
 $customers = json_decode($customersJson);
-foreach($customers as $customer){
-    $id[] = $customer->id;
+
+
+ if(count($customers) > 0){
+    $id = [];
+    foreach($customers as $customer){
+        $id[] = $customer->id;
+     }
+     sort($id);
+     $lastIndex = count($id)-1;
+     $highestId = $id[$lastIndex];
+     $currentId = $highestId+1;
+ }else{
+    $currentId = 1;
  }
- sort($id);
-$lastIndex = count($id)-1;
-$highestId = $id[$lastIndex];
-$currentId = $highestId+1;
+//  sort($id);
+// $lastIndex = count($id)-1;
+// $highestId = $id[$lastIndex];
+// $currentId = $highestId+1;
 $data = [
-    "id"=>4,
+    "id"=>$currentId,
     "name"=>$_POST['name'],
     "phone"=>$_POST['phone'],
     "email"=>$_POST['email'],

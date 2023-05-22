@@ -59,11 +59,13 @@ function kill_session(){
 
 
 
+// .DIRECTORY_SEPARATOR.'collage_canteen'
+// .DIRECTORY_SEPARATOR.'collage_canteen'
 
-
-$webroot = "http://campus_canteen.test".'/';
+$webroot = "http://collage_canteen.test/".DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR;
 $docroot = $_SERVER['DOCUMENT_ROOT'];
-$partialAdmin = $docroot.'/'.'collage_canteen'.'/'.'admin'.'/'.'partials'.'/';
-$frontEndElement = $docroot.'/'.'collage_canteen'.'/'.'frontend'.'/'.'partials'.'/';
-$adminSources = $docroot.'/'.'collage_canteen'.'/'.'admin'.'/'.'sources'.'/';
-$frontEndSources =  $docroot.'/'.'collage_canteen'.'/'.'frontend'.'/'.'sources'.'/';
+$partialAdmin = $docroot.DIRECTORY_SEPARATOR.'admin'.DIRECTORY_SEPARATOR.'partials'.DIRECTORY_SEPARATOR;
+$frontEndElement = $docroot.DIRECTORY_SEPARATOR.'frontend'.DIRECTORY_SEPARATOR.'partials'.DIRECTORY_SEPARATOR;
+$adminSources = $docroot.DIRECTORY_SEPARATOR.'admin'.DIRECTORY_SEPARATOR.'sources'.DIRECTORY_SEPARATOR;
+$frontEndSources =  $docroot.DIRECTORY_SEPARATOR.'frontend'.DIRECTORY_SEPARATOR.'sources'.DIRECTORY_SEPARATOR;
+$upload = $docroot.DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR;

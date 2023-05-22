@@ -1,5 +1,5 @@
 
-<?php include_once($_SERVER['DOCUMENT_ROOT'].'/'.'collage_canteen'.'/'.'config.php');
+<?php include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
 
 $customersJson = file_get_contents($adminSources.'customers.json');
 $customers = json_decode($customersJson);
@@ -545,7 +545,7 @@ $customers = json_decode($customersJson);
                         <td class="sorting_1"><?=$customer->name?></td>
                         <td><?=$customer->username?></td>
                         <td>
-                            <img src="<?=$customer->img?>" alt="" height="50px" width="50px">
+                            <img src="<?=$webroot.$customer->img?>" alt="" height="50px" width="50px">
                         </td>
                         <td><?=$customer->address?></td>
                         <td><?=$customer->phone?></td>
@@ -554,7 +554,11 @@ $customers = json_decode($customersJson);
                         <td class="text-center">
                             <div class="d-flex  ">
                                 <a href="customer_View.php?id=<?=$customer->id?>" class="btn btn-success btn-sm">View</a>
-                                <a href="" class="btn btn-info btn-sm">Edit</a>
+                                <form action="customerData_edit.php" method="post">
+                                <button type="submit" class="btn btn-info btn-sm">Edit</button>
+                                <input type="hidden" name = "id" value="<?=$customer->id?>">
+                                </form>
+                                
                                 <form action="customer_delete.php" method="post">
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                 <input type="hidden" name = "id" value="<?=$customer->id?>">

@@ -1,5 +1,5 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT']).'/'.'collage_canteen'.'/'.'config.php';
+include_once($_SERVER['DOCUMENT_ROOT']).DIRECTORY_SEPARATOR.'config.php';
 $sliderItemJson = file_get_contents($frontEndSources.'slider.json');
 $sliderItems = json_decode($sliderItemJson);
 foreach($sliderItems as $sliderItem){

@@ -1,4 +1,4 @@
-<?php include_once($_SERVER['DOCUMENT_ROOT'].'/'.'collage_canteen'.'/'.'config.php');
+<?php include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
     $bannerImageJson = file_get_contents($adminSources.'banner.json');
     $bannerImageData = json_decode($bannerImageJson);
 

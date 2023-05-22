@@ -1,4 +1,4 @@
-<?php include_once($_SERVER['DOCUMENT_ROOT'].'/'.'collage_canteen'.'/'.'config.php');
+<?php include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
 $id = $_POST['id'];
 $productsJson = file_get_contents($adminSources.'products.json');
 $products = json_decode($productsJson);
@@ -516,7 +516,7 @@ foreach($products as $product){
         <div class="content">
             <h3>Add Product</h3>
 
-            <form action="product_edit_control.php" method="post">
+            <form action="product_edit_control.php" method="post"  enctype="multipart/form-data" >
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Name<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
@@ -540,7 +540,7 @@ foreach($products as $product){
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Description</label>
                     <div class="col-lg-10">
-                        <textarea type="text" name="description" class="form-control"  value="<?=$productEdit->description?>"> </textarea> 
+                        <textarea type="text" name="description" class="form-control" ><?=$productEdit->description?> </textarea> 
                     </div>
                 </div>
 

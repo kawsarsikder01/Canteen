@@ -1,4 +1,4 @@
-<?php include_once($_SERVER['DOCUMENT_ROOT']).'/'.'collage_canteen'.'/'.'config.php';
+<?php include_once($_SERVER['DOCUMENT_ROOT']).DIRECTORY_SEPARATOR.'config.php';
 $bakeryJson = file_get_contents($frontEndSources.'bakery.json');
 $bakeryItems = json_decode($bakeryJson);
 

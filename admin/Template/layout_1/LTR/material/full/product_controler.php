@@ -1,12 +1,23 @@
 <?php 
-include_once($_SERVER['DOCUMENT_ROOT'].'/'.'collage_canteen'.'/'.'config.php');
+include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
+
+
+$fileName =uniqid().'_'. $_FILES['img']['name'];
+$target = $_FILES['img']['tmp_name'];
+$destination = $upload.$fileName;
+if(move_uploaded_file($target,$destination)){
+$img = $fileName;
+}
+
+// dd($_FILES);
+
 
 $name = $_POST['name'];
 $type = $_POST['type'];
 $description = $_POST['description'];
 $cost_price = $_POST['cost-price'];
 $sell_price = $_POST['sell-price'];
-$img = $_POST['img'];
+$img = $img;
 $e_sale ;
  if(isset($_POST['e-sale'])){
     $e_sale = $_POST['e-sale'];

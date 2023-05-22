@@ -1,6 +1,6 @@
 
 <?php
-include_once($_SERVER['DOCUMENT_ROOT']).'/'.'collage_canteen'.'/'.'config.php';
+include_once($_SERVER['DOCUMENT_ROOT']).DIRECTORY_SEPARATOR.'config.php';
 
 $iconJson = file_get_contents($frontEndSources.'menu_icon.json');
 $icons = json_decode($iconJson);

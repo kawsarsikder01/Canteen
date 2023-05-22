@@ -1,4 +1,4 @@
-<?php include_once($_SERVER['DOCUMENT_ROOT']).'/'.'collage_canteen'.'/'.'config.php';?>
+<?php include_once($_SERVER['DOCUMENT_ROOT']).DIRECTORY_SEPARATOR.'config.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <?php include_once($frontEndElement.'head.php'); ?>

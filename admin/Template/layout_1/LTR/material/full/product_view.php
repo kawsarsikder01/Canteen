@@ -1,4 +1,4 @@
-<?php include_once($_SERVER['DOCUMENT_ROOT'].'/'.'collage_canteen'.'/'.'config.php');
+<?php include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
 
 $id  = $_GET['id'];
 $productsJson = file_get_contents($adminSources.'products.json');
@@ -469,7 +469,7 @@ include_once($partialAdmin.'head.php');
         <section id="customer-details">
         <div class="customer-details">
             <div class="image">
-                <img src="../../../../global_assets/images/<?=$productView->img?>" height="300px" width="300px" alt="">
+                <img src="<?=$webroot.$productView->img?>" height="300px" width="300px" alt="">
             </div>
             <div class="details">
                 <h3><?=$productView->name?></h3>

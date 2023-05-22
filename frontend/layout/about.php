@@ -1,4 +1,4 @@
-<?php include_once($_SERVER['DOCUMENT_ROOT']).'/'.'collage_canteen'.'/'.'config.php';
+<?php include_once($_SERVER['DOCUMENT_ROOT']).DIRECTORY_SEPARATOR.'config.php';
 class About{
     private $about = "Our daily changing menu represents the best of what <br>
     our local markets have to offer. Our passion for sourcing<br>

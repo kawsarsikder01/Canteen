@@ -1,4 +1,4 @@
-<?php include_once($_SERVER['DOCUMENT_ROOT']).'/'.'collage_canteen'.'/'.'config.php';
+<?php include_once($_SERVER['DOCUMENT_ROOT']).DIRECTORY_SEPARATOR.'config.php';
 $fastFoodJson = file_get_contents($frontEndSources.'fastfood.json');
 $fastFoodItems = json_decode($fastFoodJson);
 

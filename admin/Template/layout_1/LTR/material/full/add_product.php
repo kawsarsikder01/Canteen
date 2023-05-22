@@ -499,7 +499,7 @@
         <div class="content">
             <h3>Add Product</h3>
 
-            <form action="product_controler.php" method="post">
+            <form action="product_controler.php" method="post" enctype = "multipart/form-data">
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Name<span class="text-danger">*</span></label>
                     <div class="col-lg-10">

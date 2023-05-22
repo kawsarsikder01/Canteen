@@ -1,4 +1,4 @@
-<?php include_once($_SERVER['DOCUMENT_ROOT']).'/'.'collage_canteen'.'/'.'config.php';
+<?php include_once($_SERVER['DOCUMENT_ROOT']).DIRECTORY_SEPARATOR.'config.php';
 $drinkItemJson = file_get_contents($frontEndSources.'drink.json');
 $drinkItems = json_decode($drinkItemJson);
 

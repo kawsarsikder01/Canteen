@@ -1,5 +1,5 @@
 <?php 
-include_once($_SERVER['DOCUMENT_ROOT']).'/'.'collage_canteen'.'/'.'config.php';
+include_once($_SERVER['DOCUMENT_ROOT']).DIRECTORY_SEPARATOR.'config.php';
 $userJson = file_get_contents($frontEndSources.'user_dashboard.json');
 $userDashboardItems = json_decode($userJson);
 echo '<div class="user">';

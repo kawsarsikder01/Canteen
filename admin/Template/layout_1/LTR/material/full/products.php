@@ -1,5 +1,5 @@
 
-<?php include_once($_SERVER['DOCUMENT_ROOT'].'/'.'collage_canteen'.'/'.'config.php');
+<?php include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
 
 $productsJson = file_get_contents($adminSources.'products.json');
 $products = json_decode($productsJson);
@@ -554,7 +554,7 @@ session_start();
                     <tr role="row" class="odd">
                         <td class="sorting_1"><?=$product->name?></td>
                         <td>
-                            <img src="../../../../global_assets/images/<?=$product->img?>" alt="Image of biscuit" style="height:100px; width: 100%;">
+                            <img src="<?=$webroot.$product->img?>" alt="Image of biscuit" style="height:100px; width: 100%;">
                         </td>
                         <td><?=$product->category?></td>
                         <td>Tk <?=$product->costPrice?></td>

@@ -1,5 +1,5 @@
   <?php
-	include_once($_SERVER['DOCUMENT_ROOT'].'/'.'collage_canteen'.'/'.'config.php');
+	include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
 	$navItemJson = file_get_contents($adminSources.'sidebar.json');
 	$navItems = json_decode($navItemJson);
     // $menuChilds = [
