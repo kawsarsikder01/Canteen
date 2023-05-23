@@ -1,14 +1,32 @@
 <?php include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
 session_start();
 
-
-$fileName =uniqid().'_'. $_FILES['img']['name'];
-$target = $_FILES['img']['tmp_name'];
-$destination = $upload.$fileName;
-$img;
-if(move_uploaded_file($target,$destination)){
-$img = $fileName;
+$old_img = $_POST['old_img'];
+//  dd($old_img);
+$img ;
+if(array_key_exists('img',$_FILES) && !empty($_FILES['img']['name']) ){
+    $fileName =uniqid().'_'. $_FILES['img']['name'];
+    $target = $_FILES['img']['tmp_name'];
+    $destination = $upload.$fileName;
+    if(move_uploaded_file($target,$destination)){
+    $img = $fileName;
+    }
+    if(file_exists($upload.$old_img)){
+        unlink($upload.$old_img);
+    }else{
+        dd("Image Not Edit");
+    }
+}else{
+    $img = $old_img;
 }
+
+
+// $fileName =uniqid().'_'. $_FILES['img']['name'];
+// $target = $_FILES['img']['tmp_name'];
+// $destination = $upload.$fileName;
+// if(move_uploaded_file($target,$destination)){
+// $img = $fileName;
+// }
 $id = $_POST['id'];
 $name = $_POST['name'];
 $type = $_POST['type'];

@@ -62,7 +62,7 @@ function kill_session(){
 // .DIRECTORY_SEPARATOR.'collage_canteen'
 // .DIRECTORY_SEPARATOR.'collage_canteen'
 
-$webroot = "http://collage_canteen.test/".DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR;
+$webroot = "http://collage_canteen.test/".'uploads'.DIRECTORY_SEPARATOR;
 $docroot = $_SERVER['DOCUMENT_ROOT'];
 $partialAdmin = $docroot.DIRECTORY_SEPARATOR.'admin'.DIRECTORY_SEPARATOR.'partials'.DIRECTORY_SEPARATOR;
 $frontEndElement = $docroot.DIRECTORY_SEPARATOR.'frontend'.DIRECTORY_SEPARATOR.'partials'.DIRECTORY_SEPARATOR;

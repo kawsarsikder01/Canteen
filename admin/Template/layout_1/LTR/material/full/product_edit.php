@@ -568,7 +568,12 @@ foreach($products as $product){
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Image</label>
                     <div class="col-lg-10">
-                        <div class="uniform-uploader"><input type="file" name="img" class="form-control-uniform" data-fouc=""><span class="filename" style="user-select: none;">No file selected</span><span class="action btn btn-light legitRipple" style="user-select: none;">Choose File</span></div>
+                        <div class="uniform-uploader">
+                            <input type="file" name="img" class="form-control-uniform" data-fouc="">
+                            <img src="<?=$webroot.$productEdit->img?>"width="50"height="50" alt="">
+                            <input type="hidden" name="old_img" value = "<?=$productEdit->img?>" >
+
+                            <span class="filename" style="user-select: none;">No file selected</span><span class="action btn btn-light legitRipple" style="user-select: none;">Choose File</span></div>
                     </div>
                 </div>
 
