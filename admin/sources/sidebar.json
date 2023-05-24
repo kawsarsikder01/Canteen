@@ -15,11 +15,11 @@
         "subnav":[
             {
                 "name":"Add Customer",
-                "link":"add_customer.html"
+                "link":"add_customer.php"
             },
             {
                 "name":"Customers",
-                "link":"customers.html"
+                "link":"customers.php"
             }
         ]
     }
@@ -112,7 +112,7 @@
             },
             {
                 "name":"Banner Images",
-                "link":"banner_images.html"
+                "link":"banner_images.php"
             },
             {
                 "name":"Privecy And Policy Page",

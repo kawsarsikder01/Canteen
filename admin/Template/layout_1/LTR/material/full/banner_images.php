@@ -326,108 +326,9 @@
 
 
             <!-- Main navigation -->
-				<div class="card card-sidebar-mobile">
-					<ul class="nav nav-sidebar" data-nav-type="accordion">
-
-						<!-- Main -->
-						<!-- <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li> -->
-
-						<li class="nav-item">
-							<a href="index.html" class="nav-link active">
-								<i class="icon-home4"></i>
-								<span>
-									Dashboard
-								</span>
-							</a>
-						</li>
-
-						<!-- POS -->
-						<li class="nav-item">
-							<a href="pos_index.html" class="nav-link active">
-								<i class="icon-printer4"></i>
-								<span>
-									POS
-								</span>
-							</a>
-						</li>
-
-						<!-- Category -->
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link"><i class="icon-users2 mr-3"></i> <span>Castomers</span></a>
-
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="add_customer.html" class="nav-link active">Add Castomer</a></li>
-								<li class="nav-item"><a href="customers.html" class="nav-link active">Castomers</a></li>
-							</ul>
-						</li>
-
-						<!-- Category -->
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link"><i class="icon-list mr-3"></i> <span>Category</span></a>
-
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="add_category.html" class="nav-link active">Add Category</a></li>
-								<li class="nav-item"><a href="categories.html" class="nav-link active">Categories</a></li>
-							</ul>
-						</li>
-
-						<!-- Product -->
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link"><i class="icon-basket mr-3"></i> <span>Product</span></a>
-
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="add_product.html" class="nav-link active">Add Product</a></li>
-								<li class="nav-item"><a href="products.html" class="nav-link active">Products</a></li>
-							</ul>
-						</li>
-
-						<!-- Out Door Places -->
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link"><i class="icon-exit3 mr-3"></i> <span>Outdoor Place</span></a>
-
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="add_outdoor_place.html" class="nav-link active">Add Outdoor Place</a></li>
-								<li class="nav-item"><a href="outdoor_places.html" class="nav-link active">Outdoor Places</a></li>
-							</ul>
-						</li>
-
-						<!-- Orders -->
-						<li class="nav-item">
-							<a href="orders.html" class="nav-link active">
-								<i class="icon-compose"></i>
-								<span>
-									Orders
-								</span>
-							</a>
-						</li>
-
-						<!-- Settings -->
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link"><i class="icon-cogs mr-3"></i> <span>Settings</span></a>
-
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="add_user.html" class="nav-link active">Add User</a></li>
-								<li class="nav-item"><a href="users.html" class="nav-link active">Users</a></li>
-								<li class="nav-item"><a href="user_roles.html" class="nav-link active">User Roles</a></li>
-								<li class="nav-item"><a href="#" class="nav-link active">Permishions</a></li>
-							</ul>
-						</li>
-
-						<!-- App Config -->
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link"><i class="icon-android mr-3"></i> <span>App configuration</span></a>
-
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="app_config.html" class="nav-link active">App Config</a></li>
-								<li class="nav-item"><a href="banner_images.html" class="nav-link active">Banner Images</a></li>
-								<li class="nav-item"><a href="privecy_policy_page_setup.html" class="nav-link active">Privecy And Policy Page</a></li>
-								<li class="nav-item"><a href="about_page_setup.html" class="nav-link active">About Page</a></li>
-							</ul>
-						</li>
-						<!-- /page kits -->
-
-					</ul>
-				</div>
+            <?php
+				include_once($partialAdmin.'main_side_nav.php');
+				?>
 				<!-- /main navigation -->
 
         </div>
@@ -508,11 +409,17 @@
         <div class="content">
             <div class="card p-3 gy-3">
                 <h3>Add Banner Image</h3>
-                <form action="bannerImage_controller.php" method="post">
+                <form action="bannerImage_controller.php" method="post" enctype = "multipart/form-data">
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2">Title<span class="text-danger">*</span></label>
                         <div class="col-lg-10">
                             <textarea type="text" name ="title"  class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-2">Status<span class="text-danger">*</span></label>
+                        <div class="col-lg-10">
+                            <input type="text" name ="active"  class="form-control"></input>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -525,9 +432,14 @@
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2">Banner Image</label>
                         <div class="col-lg-10">
-                            <div class="uniform-uploader"><input type="file" name ="img" class="form-control-uniform" data-fouc=""><span class="filename" style="user-select: none;">No file selected</span><span class="action btn btn-light legitRipple" style="user-select: none;">Choose File</span></div>
+                            <div class="uniform-uploader">
+                                <input type="file" name ="img" class="form-control-uniform">
+                            <span class="filename" style="user-select: none;">No file selected</span>
+                            <span class="action btn btn-light legitRipple" style="user-select: none;">Choose File</span></div>
                         </div>
+
                     </div>
+                    
 
                     <div class="ps-5">
                         <div class="text-start">
@@ -546,9 +458,9 @@
                         <div class="card">
 						    <div class="card-img-actions">
                                 
-								<img class=" w-100" src="../../../../global_assets/images/placeholders/<?=$bannerImage->img?> " height="300px"alt="">
+								<img class=" w-100" src="<?=$webroot.$bannerImage->img?> " height="300px"alt="">
 								<div class="card-img-actions-overlay">
-									<a href="../../../../global_assets/images/placeholders/<?=$bannerImage->img?>" class="btn btn-outline bg-white text-white border-white border-2 legitRipple" data-popup="lightbox">
+									<a href="<?=$webroot.$bannerImage->img?>" class="btn btn-outline bg-white text-white border-white border-2 legitRipple" data-popup="lightbox">
 										Preview
 									</a>
 									<a href="#" class="btn btn-outline bg-white text-white border-white border-2 ml-2 legitRipple">
@@ -565,14 +477,14 @@
 							<div class="card-footer d-flex justify-content-between align-items-center">
 								<span class="font-size-sm text-uppercase font-weight-semibold">Nov 12, 11:25 am</span>
 								<span class="font-size-sm text-uppercase text-success font-weight-semibold">
-                                <form action="banner_delete.php" class="d-inline" method="post" >
+                                <form action="banner_image_edit.php" class="d-inline" method="post" >
                                     <button type="submit" class="btn btn-info btn-sm ">Edit</button>
-                                    <input type="hidden" name = "id" value = "">
-                                    </form>
-                                    <form action="banner_delete.php" class="d-inline" method="post" >
+                                    <input type="hidden" name = "id" value = "<?=$bannerImage->id?>">
+                                </form>
+                                <form action="banner_delete.php" class="d-inline" method="post" >
                                     <button type="submit" class="btn btn-danger btn-sm ">Delete</button>
                                     <input type="hidden" name = "id" value = "<?=$bannerImage->id?>">
-                                    </form>
+                                </form>
                                     
                                 </span>
 							</div>

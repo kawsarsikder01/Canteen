@@ -1,5 +1,9 @@
 <?php
 
+
+include_once($_SERVER['DOCUMENT_ROOT'].'/'."vendor".'/'."autoload.php");
+
+
 function d($var){
     echo "<pre>";
     print_r($var);
@@ -69,3 +73,4 @@ $frontEndElement = $docroot.DIRECTORY_SEPARATOR.'frontend'.DIRECTORY_SEPARATOR.'
 $adminSources = $docroot.DIRECTORY_SEPARATOR.'admin'.DIRECTORY_SEPARATOR.'sources'.DIRECTORY_SEPARATOR;
 $frontEndSources =  $docroot.DIRECTORY_SEPARATOR.'frontend'.DIRECTORY_SEPARATOR.'sources'.DIRECTORY_SEPARATOR;
 $upload = $docroot.DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR;
+$webroot2 = "http://collage_canteen.test/".'uploads'.'/';

@@ -4,6 +4,19 @@ include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
 $customersJson = file_get_contents($adminSources.'customers.json');
 $customers = json_decode($customersJson);
 
+// dd($_FILES);
+$img;
+$fileName =uniqid().'_'. $_FILES['img']['name'];
+    $target = $_FILES['img']['tmp_name'];
+    $destination = $upload.$fileName;
+
+if(move_uploaded_file($target,$destination)){
+    $img = $fileName;
+}
+
+
+
+
 
  if(count($customers) > 0){
     $id = [];
@@ -28,7 +41,7 @@ $data = [
     "email"=>$_POST['email'],
     "age"=>$_POST['age'],
     "address"=>$_POST['address'],
-    "img"=>$_POST['img'],
+    "img"=>$img,
     "passwoard"=>$_POST['passwoard'],
     "username"=>$_POST['username']
 ];

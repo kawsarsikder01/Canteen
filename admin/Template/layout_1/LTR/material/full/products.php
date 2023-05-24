@@ -328,108 +328,7 @@ session_start();
 
 
 <!-- Main navigation -->
-<div class="card card-sidebar-mobile">
-    <ul class="nav nav-sidebar" data-nav-type="accordion">
-
-        <!-- Main -->
-        <!-- <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li> -->
-
-        <li class="nav-item">
-            <a href="index.html" class="nav-link active">
-                <i class="icon-home4"></i>
-                <span>
-                    Dashboard
-                </span>
-            </a>
-        </li>
-
-        <!-- POS -->
-        <li class="nav-item">
-            <a href="pos_index.html" class="nav-link active">
-                <i class="icon-printer4"></i>
-                <span>
-                    POS
-                </span>
-            </a>
-        </li>
-
-        <!-- Category -->
-        <li class="nav-item nav-item-submenu">
-            <a href="#" class="nav-link"><i class="icon-users2 mr-3"></i> <span>Castomers</span></a>
-
-            <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                <li class="nav-item"><a href="add_customer.html" class="nav-link active">Add Castomer</a></li>
-                <li class="nav-item"><a href="customers.html" class="nav-link active">Castomers</a></li>
-            </ul>
-        </li>
-
-        <!-- Category -->
-        <li class="nav-item nav-item-submenu">
-            <a href="#" class="nav-link"><i class="icon-list mr-3"></i> <span>Category</span></a>
-
-            <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                <li class="nav-item"><a href="add_category.html" class="nav-link active">Add Category</a></li>
-                <li class="nav-item"><a href="categories.html" class="nav-link active">Categories</a></li>
-            </ul>
-        </li>
-
-        <!-- Product -->
-        <li class="nav-item nav-item-submenu">
-            <a href="#" class="nav-link"><i class="icon-basket mr-3"></i> <span>Product</span></a>
-
-            <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                <li class="nav-item"><a href="add_product.html" class="nav-link active">Add Product</a></li>
-                <li class="nav-item"><a href="products.html" class="nav-link active">Products</a></li>
-            </ul>
-        </li>
-
-        <!-- Out Door Places -->
-        <li class="nav-item nav-item-submenu">
-            <a href="#" class="nav-link"><i class="icon-exit3 mr-3"></i> <span>Outdoor Place</span></a>
-
-            <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                <li class="nav-item"><a href="add_outdoor_place.html" class="nav-link active">Add Outdoor Place</a></li>
-                <li class="nav-item"><a href="outdoor_places.html" class="nav-link active">Outdoor Places</a></li>
-            </ul>
-        </li>
-
-        <!-- Orders -->
-        <li class="nav-item">
-            <a href="orders.html" class="nav-link active">
-                <i class="icon-compose"></i>
-                <span>
-                    Orders
-                </span>
-            </a>
-        </li>
-
-        <!-- Settings -->
-        <li class="nav-item nav-item-submenu">
-            <a href="#" class="nav-link"><i class="icon-cogs mr-3"></i> <span>Settings</span></a>
-
-            <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                <li class="nav-item"><a href="add_user.html" class="nav-link active">Add User</a></li>
-                <li class="nav-item"><a href="users.html" class="nav-link active">Users</a></li>
-                <li class="nav-item"><a href="user_roles.html" class="nav-link active">User Roles</a></li>
-                <li class="nav-item"><a href="#" class="nav-link active">Permishions</a></li>
-            </ul>
-        </li>
-
-        <!-- App Config -->
-        <li class="nav-item nav-item-submenu">
-            <a href="#" class="nav-link"><i class="icon-android mr-3"></i> <span>App configuration</span></a>
-
-            <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                <li class="nav-item"><a href="app_config.html" class="nav-link active">App Config</a></li>
-                <li class="nav-item"><a href="banner_images.html" class="nav-link active">Banner Images</a></li>
-                <li class="nav-item"><a href="privecy_policy_page_setup.html" class="nav-link active">Privecy And Policy Page</a></li>
-                <li class="nav-item"><a href="about_page_setup.html" class="nav-link active">About Page</a></li>
-            </ul>
-        </li>
-        <!-- /page kits -->
-
-    </ul>
-</div>
+<?php include_once($partialAdmin.'main_side_nav.php'); ?>
 <!-- /main navigation -->
 
         </div>
@@ -533,7 +432,27 @@ session_start();
 <!--                    The <code>DataTables</code> is a highly flexible tool, based upon the foundations of progressive enhancement, and will add advanced interaction controls to any HTML table. DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function. Searching, ordering, paging etc goodness will be immediately added to the table, as shown in this example. <strong>Datatables support all available table styling.</strong>-->
                 </div>
 
-                <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer"><div class="datatable-header"><div id="DataTables_Table_0_filter" class="dataTables_filter"><label><span>Filter:</span> <input type="search" class="" placeholder="Type to filter..." aria-controls="DataTables_Table_0"></label></div><div class="dataTables_length" id="DataTables_Table_0_length"><label><span>Show:</span> <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="select2-hidden-accessible" data-select2-id="1" tabindex="-1" aria-hidden="true"><option value="10" data-select2-id="3">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="2" style="width: auto;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-DataTables_Table_0_length-g1-container"><span class="select2-selection__rendered" id="select2-DataTables_Table_0_length-g1-container" role="textbox" aria-readonly="true" title="10">10</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></label></div></div><div class="datatable-scroll"><table class="table datatable-basic dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">
+                    <div class="datatable-header">
+                        <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                            <label>
+                                <span>Filter:</span> <input type="search" class="" placeholder="Type to filter..." aria-controls="DataTables_Table_0">
+                            </label>
+                        </div>
+                        <div class="dataTables_length" id="DataTables_Table_0_length">
+                            <label><span>Show:</span> <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="select2-hidden-accessible" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                                <option value="10" data-select2-id="3">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                                </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="2" style="width: auto;">
+                                <span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-DataTables_Table_0_length-g1-container">
+                                <span class="select2-selection__rendered" id="select2-DataTables_Table_0_length-g1-container" role="textbox" aria-readonly="true" title="10">10</span>
+                                <span class="select2-selection__arrow" role="presentation"><b role="presentation"></b>
+                                </span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                <a href="product_download_pdf.php"class ="ml-3 btn btn-info">Download Pdf</a>
+                                <a href="product_print_view.php"class ="mx-3 btn btn-info">Print View</a>
+                            </label></div></div><div class="datatable-scroll"><table class="table datatable-basic dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
                     <thead>
                     <tr role="row">
                         <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="First Name: activate to sort column descending">Name</th>
@@ -572,7 +491,7 @@ session_start();
                                 </form>
                                 
                                 <form action="product_delete.php" method="post">
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are You Sure')" >Delete</button>
                                 <input type="hidden" name = "id" value="<?=$product->id?>">
                                 </form>
                                 
