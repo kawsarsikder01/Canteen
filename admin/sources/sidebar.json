@@ -43,12 +43,16 @@
         "icon":"icon-list",
         "subnav":[
             {
-                "name":"Add Categorey",
-                "link":"add_category.html"
+                "name":"Bakery Item",
+                "link":"bakery_item.php"
             },
             {
-                "name":"Categories",
-                "link":"categories.html"
+                "name":"Fast Food",
+                "link":"fast_food.php"
+            },
+            {
+                "name":"Drinks",
+                "link":"drinks.php"
             }
         ]
     },

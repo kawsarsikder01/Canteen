@@ -1,9 +1,9 @@
 <?php include_once($_SERVER['DOCUMENT_ROOT']).DIRECTORY_SEPARATOR.'config.php';
-$fastFoodJson = file_get_contents($frontEndSources.'fastfood.json');
+$fastFoodJson = file_get_contents($adminSources.'fast_food.json');
 $fastFoodItems = json_decode($fastFoodJson);
 
 include_once($frontEndElement.'card.php');
-$fastFood =new Foods;
+// $fastFood =new Foods;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +55,7 @@ $fastFood =new Foods;
       <section id="fastfood">
         <h3>Fast Food</h3>
         <div class="fastfood container">
-          <?php $fastFood->food($fastFoodItems); ?>
+          <?php food($fastFoodItems); ?>
         </div>
       </section>
 

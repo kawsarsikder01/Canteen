@@ -1,10 +1,10 @@
 <?php include_once($_SERVER['DOCUMENT_ROOT']).DIRECTORY_SEPARATOR.'config.php';
 
-$homeJson = file_get_contents($frontEndSources.'home.json');
+$homeJson = file_get_contents($adminSources.'products.json');
 $homeProduct = json_decode($homeJson);
 
 include_once($frontEndElement.'card.php');
-$homeFood = new Foods;
+// $homeFood = new Foods;
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +70,7 @@ $homeFood = new Foods;
 <section id="shop">
   <h3>Shop</h3>
   <div class="container shop">
-  <?php $homeFood->food($homeProduct); ?>
+  <?php homePageProduct($homeProduct) ?>
    
   </div>
 </section>

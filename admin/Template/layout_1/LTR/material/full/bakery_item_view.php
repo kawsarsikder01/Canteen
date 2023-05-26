@@ -1,54 +1,23 @@
+<?php include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
+
+$id  = $_POST['id'];
+$productsJson = file_get_contents($adminSources.'bakery_item.json');
+$products = json_decode($productsJson);
+$productView;
+foreach($products as $product){
+    if($product->id == $id){
+        $productView = $product;
+        break;
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Campus Canteen</title>
+<?php
+include_once($partialAdmin.'head.php');
+?>
 
-    <!-- Global stylesheets -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
-    <link href="../../../../global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/layout.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/components.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/colors.min.css" rel="stylesheet" type="text/css">
-    <!-- /global stylesheets -->
-
-    <!-- Core JS files -->
-    <script src="../../../../global_assets/js/main/jquery.min.js"></script>
-    <script src="../../../../global_assets/js/main/bootstrap.bundle.min.js"></script>
-    <script src="../../../../global_assets/js/plugins/loaders/blockui.min.js"></script>
-    <script src="../../../../global_assets/js/plugins/ui/ripple.min.js"></script>
-    <!-- /core JS files -->
-
-    <!-- Theme JS files -->
-    <script src="../../../../global_assets/js/plugins/visualization/d3/d3.min.js"></script>
-    <script src="../../../../global_assets/js/plugins/visualization/d3/d3_tooltip.js"></script>
-    <script src="../../../../global_assets/js/plugins/forms/styling/switchery.min.js"></script>
-    <script src="../../../../global_assets/js/plugins/ui/moment/moment.min.js"></script>
-    <script src="../../../../global_assets/js/plugins/pickers/daterangepicker.js"></script>
-
-    <script src="assets/js/app.js"></script>
-    <script src="../../../../global_assets/js/demo_pages/dashboard.js"></script>
-    <script src="../../../../global_assets/js/demo_charts/pages/dashboard/light/streamgraph.js"></script>
-    <script src="../../../../global_assets/js/demo_charts/pages/dashboard/light/sparklines.js"></script>
-    <script src="../../../../global_assets/js/demo_charts/pages/dashboard/light/lines.js"></script>
-    <script src="../../../../global_assets/js/demo_charts/pages/dashboard/light/areas.js"></script>
-    <script src="../../../../global_assets/js/demo_charts/pages/dashboard/light/donuts.js"></script>
-    <script src="../../../../global_assets/js/demo_charts/pages/dashboard/light/bars.js"></script>
-    <script src="../../../../global_assets/js/demo_charts/pages/dashboard/light/progress.js"></script>
-    <script src="../../../../global_assets/js/demo_charts/pages/dashboard/light/heatmaps.js"></script>
-    <script src="../../../../global_assets/js/demo_charts/pages/dashboard/light/pies.js"></script>
-    <script src="../../../../global_assets/js/demo_charts/pages/dashboard/light/bullets.js"></script>
-
-
-    <!--    For Radio Checkbox-->
-    <script src="../../../../global_assets/js/demo_pages/form_checkboxes_radios.js"></script>
-    <!-- /theme JS files -->
-
-</head>
 
 <body>
 
@@ -81,7 +50,7 @@
 
         <span class="navbar-text ml-md-3">
 				<span class="badge badge-mark border-orange-300 mr-2"></span>
-				Morning, Kawsar .
+				Morning, Kawsar.
 			</span>
 
         <ul class="navbar-nav ml-md-auto">
@@ -317,108 +286,9 @@
 
 
             <!-- Main navigation -->
-				<div class="card card-sidebar-mobile">
-					<ul class="nav nav-sidebar" data-nav-type="accordion">
-
-						<!-- Main -->
-						<!-- <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li> -->
-
-						<li class="nav-item">
-							<a href="index.html" class="nav-link active">
-								<i class="icon-home4"></i>
-								<span>
-									Dashboard
-								</span>
-							</a>
-						</li>
-
-						<!-- POS -->
-						<li class="nav-item">
-							<a href="pos_index.html" class="nav-link active">
-								<i class="icon-printer4"></i>
-								<span>
-									POS
-								</span>
-							</a>
-						</li>
-
-						<!-- Category -->
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link"><i class="icon-users2 mr-3"></i> <span>Castomers</span></a>
-
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="add_customer.html" class="nav-link active">Add Castomer</a></li>
-								<li class="nav-item"><a href="customers.html" class="nav-link active">Castomers</a></li>
-							</ul>
-						</li>
-
-						<!-- Category -->
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link"><i class="icon-list mr-3"></i> <span>Category</span></a>
-
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="add_category.html" class="nav-link active">Add Category</a></li>
-								<li class="nav-item"><a href="categories.html" class="nav-link active">Categories</a></li>
-							</ul>
-						</li>
-
-						<!-- Product -->
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link"><i class="icon-basket mr-3"></i> <span>Product</span></a>
-
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="add_product.html" class="nav-link active">Add Product</a></li>
-								<li class="nav-item"><a href="products.html" class="nav-link active">Products</a></li>
-							</ul>
-						</li>
-
-						<!-- Out Door Places -->
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link"><i class="icon-exit3 mr-3"></i> <span>Outdoor Place</span></a>
-
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="add_outdoor_place.html" class="nav-link active">Add Outdoor Place</a></li>
-								<li class="nav-item"><a href="outdoor_places.html" class="nav-link active">Outdoor Places</a></li>
-							</ul>
-						</li>
-
-						<!-- Orders -->
-						<li class="nav-item">
-							<a href="orders.html" class="nav-link active">
-								<i class="icon-compose"></i>
-								<span>
-									Orders
-								</span>
-							</a>
-						</li>
-
-						<!-- Settings -->
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link"><i class="icon-cogs mr-3"></i> <span>Settings</span></a>
-
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="add_user.html" class="nav-link active">Add User</a></li>
-								<li class="nav-item"><a href="users.html" class="nav-link active">Users</a></li>
-								<li class="nav-item"><a href="user_roles.html" class="nav-link active">User Roles</a></li>
-								<li class="nav-item"><a href="#" class="nav-link active">Permishions</a></li>
-							</ul>
-						</li>
-
-						<!-- App Config -->
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link"><i class="icon-android mr-3"></i> <span>App configuration</span></a>
-
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="app_config.html" class="nav-link active">App Config</a></li>
-								<li class="nav-item"><a href="banner_images.html" class="nav-link active">Banner Images</a></li>
-								<li class="nav-item"><a href="privecy_policy_page_setup.html" class="nav-link active">Privecy And Policy Page</a></li>
-								<li class="nav-item"><a href="about_page_setup.html" class="nav-link active">About Page</a></li>
-							</ul>
-						</li>
-						<!-- /page kits -->
-
-					</ul>
-				</div>
+            <?php
+				include_once($partialAdmin.'main_side_nav.php');
+				?>
 				<!-- /main navigation -->
 
         </div>
@@ -461,7 +331,7 @@
                 <div class="d-flex">
                     <div class="breadcrumb">
                         <a href="index.html" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
-                        <span class="breadcrumb-item active">Add Category</span>
+                        <span class="breadcrumb-item active">Customers</span>
                     </div>
 
                     <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
@@ -497,69 +367,26 @@
 
         <!-- Content area -->
         <div class="content">
-            <h3>Add Category</h3>
+        <section id="customer-details">
+        <div class="customer-details">
+            <div class="image">
+                <img src="<?=$webroot.$productView->img?>" height="300px" width="300px" alt="">
+            </div>
+            <div class="details">
+                <h3><?=$productView->name?></h3>
+                <p>Cost Price : <?=$productView->cost_price?></p>
+                <p>Sell Price : <?=$productView->sell_price?></p>
+                <p>Category :<?=$productView->category?></p>
+                <p>Type : <?=$productView->type?></p>
+                <p>E-Sale : <?php if(isset($product->esale)){ echo "Enabled"; }else{ echo "Disabled"; } ?></p>
+                <p>Outdoor : <?php if(isset($product->outdoor)){ echo "Enabled"; }else{ echo "Disabled"; } ?></p>
+                <p>Description : <?=$productView->description?></p>
+                
+            </div>
+        </div>
+    </section>
+           
 
-            <form action="">
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-2">Name<span class="text-danger">*</span></label>
-                    <div class="col-lg-10">
-                        <input type="text" class="form-control" placeholder="Enter category name...">
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-2">Type<span class="text-danger">*</span></label>
-                    <div class="col-lg-10">
-                        <input type="text" class="form-control" placeholder="Enter category type...">
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-2">Description</label>
-                    <div class="col-lg-10">
-                        <textarea type="text" class="form-control"></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-2">Image</label>
-                    <div class="col-lg-10">
-                        <div class="uniform-uploader"><input type="file" class="form-control-uniform" data-fouc=""><span class="filename" style="user-select: none;">No file selected</span><span class="action btn btn-light legitRipple" style="user-select: none;">Choose File</span></div>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-2">E-sale Enabled</label>
-                    <div class="col-lg-10">
-                        <div class="form-check form-check-switchery form-check-switchery-double">
-                            <label class="form-check-label">
-                                Enable
-                                <input type="checkbox" class="form-check-input-switchery" checked="Enable" data-fouc="" data-switchery="true" style="display: none;">
-                                Disable
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-2">Outdoor Enabled</label>
-                    <div class="col-lg-10">
-                        <div class="form-check form-check-switchery form-check-switchery-double">
-                            <label class="form-check-label">
-                                Enable
-                                <input type="checkbox" class="form-check-input-switchery" checked="Enable" data-fouc="" data-switchery="true" style="display: none;">
-                                Disable
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="ps-5">
-                    <div class="text-start">
-                        <button type="submit" class="btn btn-primary legitRipple">Save</button>
-                    </div>
-                </div>
-            </form>
         </div>
         <!-- /content area -->
 
@@ -575,7 +402,7 @@
 
             <div class="navbar-collapse collapse" id="navbar-footer">
 					<span class="navbar-text">
-						&copy; 2022 - 2023 <a href="#">Campus Canteen</a> by <a href="https://github.com/Prince-Costa" target="_blank">Prince Costa</a>
+						&copy; 2022 - 2023 <a href="#">Campus Canteen</a> by <a href="https://github.com/kawsarsikder01" target="_blank">Kawsar Sikder</a>
 					</span>
 
                 <ul class="navbar-nav ml-lg-auto">

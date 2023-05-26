@@ -1,9 +1,9 @@
 <?php include_once($_SERVER['DOCUMENT_ROOT']).DIRECTORY_SEPARATOR.'config.php';
-$bakeryJson = file_get_contents($frontEndSources.'bakery.json');
+$bakeryJson = file_get_contents($adminSources.'bakery_item.json');
 $bakeryItems = json_decode($bakeryJson);
 
 include_once($frontEndElement.'card.php');
-$bakeryFood = new Foods;
+// $bakeryFood = new Foods;
 ?>
 
 
@@ -25,7 +25,8 @@ $bakeryFood = new Foods;
       <section id="bakery">
         <h3>Bakery Item</h3>
         <div class="bakery container">
-          <?php $bakeryFood->food($bakeryItems); ?>
+          <?php //$bakeryFood->food($bakeryItems); 
+          food($bakeryItems) ?>
         </div>
       </section>
 

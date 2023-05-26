@@ -22,12 +22,14 @@ $ProductsHTMLStart=<<<Product
 
 Product;
 ?>
-                   <?php      
+                   <?php  
+                     
                         foreach($products as $product):
+                            $src = $webroot.$product->img; 
                             $ProductsHTMLContent .=<<<TR
                                             <tr>
                                                 <td style="border:1px solid;">$product->name</td>
-                                                <td style="border:1px solid;"><img src="$webroot.$product->img" style="height:100px; width: 100%"></td>
+                                                <td style="border:1px solid;"><img src="$src" style="height:100px; width: 30%"></td>
                                                 <td style="border:1px solid;"> $product->category</td>
                                                 <td style="border:1px solid;"> $product->costPrice</td>
                                                 <td style="border:1px solid;"> $product->sellPrice</td>
