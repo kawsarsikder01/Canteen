@@ -1,7 +1,7 @@
 <?php
 
 
-include_once($_SERVER['DOCUMENT_ROOT'].'/'."vendor".'/'."autoload.php");
+include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR."vendor".DIRECTORY_SEPARATOR."autoload.php");
 
 
 function d($var){

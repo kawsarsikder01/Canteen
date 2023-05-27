@@ -15,10 +15,15 @@ class ComposerStaticInit9897e44df4a77a0ca9e8f29cb731dce7
         array (
             'setasign\\Fpdi\\' => 14,
         ),
+        'S' => 
+        array (
+            'SOURCE\\' => 7,
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'M' => 
         array (
@@ -36,6 +41,10 @@ class ComposerStaticInit9897e44df4a77a0ca9e8f29cb731dce7
         array (
             0 => __DIR__ . '/..' . '/setasign/fpdi/src',
         ),
+        'SOURCE\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
@@ -43,6 +52,10 @@ class ComposerStaticInit9897e44df4a77a0ca9e8f29cb731dce7
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'Mpdf\\PsrLogAwareTrait\\' => 
         array (

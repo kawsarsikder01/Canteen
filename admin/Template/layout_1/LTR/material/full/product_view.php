@@ -1,15 +1,30 @@
 <?php include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
 
-$id  = $_GET['id'];
-$productsJson = file_get_contents($adminSources.'products.json');
-$products = json_decode($productsJson);
-$productView;
-foreach($products as $product){
-    if($product->id == $id){
-        $productView = $product;
-        break;
-    }
+use SOURCE\Product;
+use SOURCE\Utility\Validator;
+use SOURCE\Utility\Utility;
+$id = Utility::sanitize($_GET['id']);
+if(!Validator::empty($id)){
+    $products = new Product();
+    $productView = $products->show($id);
+
+}else{
+    dd("Id cannot be null or empty");
 }
+
+
+
+
+// $id  = $_GET['id'];
+// $productsJson = file_get_contents($adminSources.'products.json');
+// $products = json_decode($productsJson);
+// $productView;
+// foreach($products as $product){
+//     if($product->id == $id){
+//         $productView = $product;
+//         break;
+//     }
+// }
 
 ?>
 <!DOCTYPE html>
@@ -378,8 +393,8 @@ include_once($partialAdmin.'head.php');
                 <p>Sell Price : <?=$productView->sellPrice?></p>
                 <p>Category :<?=$productView->category?></p>
                 <p>Type : <?=$productView->type?></p>
-                <p>E-Sale : <?php if(isset($product->esale)){ echo "Enabled"; }else{ echo "Disabled"; } ?></p>
-                <p>Outdoor : <?php if(isset($product->outdoor)){ echo "Enabled"; }else{ echo "Disabled"; } ?></p>
+                <p>E-Sale : <?php if(isset($productView->esale)){ echo "Enabled"; }else{ echo "Disabled"; } ?></p>
+                <p>Outdoor : <?php if(isset($productView->outdoor)){ echo "Enabled"; }else{ echo "Disabled"; } ?></p>
                 <p>Description : <?=$productView->description?></p>
                 
             </div>

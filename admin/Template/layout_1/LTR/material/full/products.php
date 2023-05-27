@@ -450,6 +450,7 @@ session_start();
                                 <span class="select2-selection__rendered" id="select2-DataTables_Table_0_length-g1-container" role="textbox" aria-readonly="true" title="10">10</span>
                                 <span class="select2-selection__arrow" role="presentation"><b role="presentation"></b>
                                 </span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                <a href="mail.php"class ="ml-3 btn btn-info">Mail</a>
                                 <a href="product_download_pdf.php"class ="ml-3 btn btn-info">Download Pdf</a>
                                 <a href="product_print_view.php"class ="mx-3 btn btn-info">Print View</a>
                             </label></div></div><div class="datatable-scroll"><table class="table datatable-basic dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
