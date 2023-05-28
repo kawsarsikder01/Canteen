@@ -13,33 +13,34 @@ $img = $fileName;
 
 // dd($_FILES);
 
+$product = new Product();
 
-$name = Utility::sanitize($_POST['name']);
-$type = Utility::sanitize ($_POST['type']);
-$description = Utility::sanitize ($_POST['description']);
-$cost_price = Utility::sanitize ($_POST['cost-price']);
-$sell_price = Utility::sanitize ($_POST['sell-price']);
-$img = $img;
+$product->name = Utility::sanitize($_POST['name']);
+$product->type = Utility::sanitize ($_POST['type']);
+$product->description = Utility::sanitize ($_POST['description']);
+$product->costPrice = Utility::sanitize ($_POST['cost-price']);
+$product->sellPrice = Utility::sanitize ($_POST['sell-price']);
+$product->img = $img;
 // dd($img);
-$e_sale ;
+$product->esale ;
  if(isset($_POST['e-sale'])){
-    $e_sale = Utility::sanitize ($_POST['e-sale']);
+   $product->esale = Utility::sanitize ($_POST['e-sale']);
  }else{
-    $e_sale = null;
+   $product->esale = null;
  }
-$outdoor;
+$product->outdoor;
  if(isset($_POST['outdoor'])){
-    $outdoor = Utility::sanitize ($_POST['outdoor']);
+    $product->outdoor = Utility::sanitize ($_POST['outdoor']);
  }else{
-    $outdoor = null;
+    $product->outdoor = null;
  }
-$category = Utility::sanitize ($_POST['category']);
+$product->category = Utility::sanitize ($_POST['category']);
+
 // $productsJson = file_get_contents($adminSources.'products.json');
 // $products = json_decode($productsJson);
-$product = new Product();
-$data = $product->data($name,$type,$description,$cost_price,$sell_price,$img,$e_sale,$outdoor,$category);
+//$data = $product->data($name,$type,$description,$cost_price,$sell_price,$img,$e_sale,$outdoor,$category);
 // dd($data);
-$result = $product->store($data);
+$result = $product->store($product);
 
 if($result){
    location('products.php');

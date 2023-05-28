@@ -1,14 +1,25 @@
 <?php include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
-$id = $_POST['id'];
-$productsJson = file_get_contents($adminSources.'products.json');
-$products = json_decode($productsJson);
-$productEdit;
-foreach($products as $product){
-    if($product->id == $id){
-        $productEdit=$product;
-        break;
-    }
+
+use SOURCE\Utility\Utility;
+use SOURCE\Utility\Validator;
+use SOURCE\Product;
+$id = Utility::sanitize ($_POST['id']);
+if(!Validator::empty($id)){
+    $product = new Product() ;
+  $productEdit =  $product->edit($id);
+}else{
+    dd("id cannot be null or empty");
 }
+// dd($productEdit);
+// $productsJson = file_get_contents($adminSources.'products.json');
+// $products = json_decode($productsJson);
+// $productEdit;
+// foreach($products as $product){
+//     if($product->id == $id){
+//         $productEdit=$product;
+//         break;
+//     }
+// }
 
 ?>
 

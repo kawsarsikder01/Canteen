@@ -14,14 +14,24 @@ class Product{
     public $img ;
     public $esale ;
     public $outdoor ;
+    private $data;
+
+
+
+    public function __construct(){
+        $dataProducts = file_get_contents(Config::datasource().'products.json');
+        $this->data = json_decode($dataProducts);
+        // dd( $this->jsonFormat);
+        
+    }
 
 
     //reading all
     public function index()
     {
-        $dataProducts = file_get_contents(Config::datasource().'products.json');
-        $products = json_decode($dataProducts);
-        return $products;
+        // $dataProducts = file_get_contents(Config::datasource().'products.json');
+        // $products = json_decode($dataProducts);
+        return $this->data;
     }
 
     public function create()
@@ -32,9 +42,10 @@ class Product{
     public function store($data)
     {
         $result = false;
+        $productData = $this->prepare($data);
         $dataProducts = file_get_contents(Config::datasource().'products.json');
         $products = json_decode($dataProducts);
-        $products[] = (object)(array)$data;
+        $products[] = (object)(array)$productData;
         if(file_exists(Config::datasource().'products.json')){
             $result = file_put_contents(Config::datasource().'products.json',json_encode($products));
         }else{
@@ -46,10 +57,11 @@ class Product{
 
     public function show($id)
     {
-        $dataProducts = file_get_contents(Config::datasource().'products.json');
-        $products = json_decode($dataProducts);
+        // $this->data
+        // $dataProducts = file_get_contents(Config::datasource().'products.json');
+        // $products = json_decode($dataProducts);
         $productView = null;
-        foreach($products  as $product){
+        foreach($this->data  as $product){
             if($product->id == $id ){
                 $productView = $product;
                 break;
@@ -61,7 +73,7 @@ class Product{
     {
         $currentId = null;
         $dataProducts = file_get_contents(Config::datasource().'products.json');
-        $products = json_decode($dataProducts);
+        $products= json_decode($dataProducts);
         if(count($products)>0){
             $id = [];
             foreach($products as $product){
@@ -78,28 +90,81 @@ class Product{
         }
         return $currentId;
     }
-    public function data($name,$type,$description,$cost_price,$sell_price,$img,$e_sale,$outdoor,$category)
+    public function prepare($data)
     {
-        $product = new Product();
-        $product->id = $this->highestId();
-        $product->name = $name;
-        $product->type = $type;
-        $product->category = $category;
-        $product->description = $description;
-        $product->costPrice = $cost_price;
-        $product->sellPrice = $sell_price;
-        $product->img = $img;
-        $product->esale = $e_sale;
-        $product->outdoor = $outdoor;
-        return $product;
+       if(is_null($data->id)  || empty($data->id)){
+        $data->id = $this->highestId();
+       }
+        return $data;
     }
-    public function edit()
+    public function edit($id)
     {
-
+        $dataProducts = file_get_contents(Config::datasource().'products.json');
+        $products = json_decode($dataProducts);
+        $productData;
+        foreach($products as $product){
+            if($product->id == $id){
+                $productData = $product;
+                break;
+            }
+        }
+        // dd($productData);
+        return $productData;
     }
-    public function update()
+    public function update($data)
     {
+        $result = false;
 
+        $dataProducts = file_get_contents(Config::datasource().'products.json');
+        $products = json_decode($dataProducts);
+        foreach($products as $key=> $product){
+            if($product->id == $data->id){
+                break;
+            }
+        }
+        $products[$key]= $data;
+        if(file_exists(Config::datasource().'products.json')){
+            $result = file_put_contents(Config::datasource().'products.json',json_encode($products));
+        }else{
+            echo "File not found";
+        }
+        return $result;
+    }
+    // public function edit_data($id,$name,$type,$category,$description,$costPrice,$sellPrice,$img,$esale,$outdoor)
+    // {
+       
+    //     $product = new Product();
+    //     $product->id = $id;
+    //     $product->name = $name;
+    //     $product->type = $type;
+    //     $product->category = $category;
+    //     $product->description = $description;
+    //     $product->costPrice = $costPrice;
+    //     $product->sellPrice = $sellPrice;
+    //     $product->img = $img;
+    //     $product->esale = $esale;
+    //     $product->outdoor = $outdoor;
+
+    //     return $product;
+
+    // }
+    public function find($id = null)
+    {
+        if(is_null($id) || empty($id) ){
+            return false;
+        }
+        $dataProducts = file_get_contents(Config::datasource().'products.json');
+        $products = json_decode($dataProducts);
+        // var_dump($products);
+        // die();
+        $productData = null;
+        foreach($products as  $product){
+            if($product->id == $id){
+                $productData = $product;
+                break;
+            }
+        }
+        return $productData;
     }
     public function trash()
     {
