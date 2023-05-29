@@ -43,15 +43,16 @@ class Product{
     {
         $result = false;
         $productData = $this->prepare($data);
-        $dataProducts = file_get_contents(Config::datasource().'products.json');
-        $products = json_decode($dataProducts);
-        $products[] = (object)(array)$productData;
-        if(file_exists(Config::datasource().'products.json')){
-            $result = file_put_contents(Config::datasource().'products.json',json_encode($products));
-        }else{
-            echo "file not found";
-        }
-        return $result;
+        // dd($productData);
+        // $dataProducts = file_get_contents(Config::datasource().'products.json');
+        // $products = json_decode($dataProducts);
+        $this->data[] = (object)(array)$productData;
+        // if(file_exists(Config::datasource().'products.json')){
+        //     $result = file_put_contents(Config::datasource().'products.json',json_encode($this->data));
+        // }else{
+        //     echo "file not found";
+        // }
+        return $this->insert(); //$result;
 
     }
 
@@ -72,11 +73,11 @@ class Product{
     public function highestId()
     {
         $currentId = null;
-        $dataProducts = file_get_contents(Config::datasource().'products.json');
-        $products= json_decode($dataProducts);
-        if(count($products)>0){
+        // $dataProducts = file_get_contents(Config::datasource().'products.json');
+        // $products= json_decode($dataProducts);
+        if(count($this->data)>0){
             $id = [];
-            foreach($products as $product){
+            foreach($this->data as $product){
                 $id[]= $product->id;
             }
             sort($id);
@@ -99,10 +100,10 @@ class Product{
     }
     public function edit($id)
     {
-        $dataProducts = file_get_contents(Config::datasource().'products.json');
-        $products = json_decode($dataProducts);
+        // $dataProducts = file_get_contents(Config::datasource().'products.json');
+        // $products = json_decode($dataProducts);
         $productData;
-        foreach($products as $product){
+        foreach($this->data as $product){
             if($product->id == $id){
                 $productData = $product;
                 break;
@@ -115,20 +116,20 @@ class Product{
     {
         $result = false;
 
-        $dataProducts = file_get_contents(Config::datasource().'products.json');
-        $products = json_decode($dataProducts);
-        foreach($products as $key=> $product){
+        // $dataProducts = file_get_contents(Config::datasource().'products.json');
+        // $products = json_decode($dataProducts);
+        foreach($this->data as $key=> $product){
             if($product->id == $data->id){
                 break;
             }
         }
-        $products[$key]= $data;
-        if(file_exists(Config::datasource().'products.json')){
-            $result = file_put_contents(Config::datasource().'products.json',json_encode($products));
-        }else{
-            echo "File not found";
-        }
-        return $result;
+        $this->data[$key]= $data;
+        // if(file_exists(Config::datasource().'products.json')){
+        //     $result = file_put_contents(Config::datasource().'products.json',json_encode($this->data));
+        // }else{
+        //     echo "File not found";
+        // }
+        return $this->insert();
     }
     // public function edit_data($id,$name,$type,$category,$description,$costPrice,$sellPrice,$img,$esale,$outdoor)
     // {
@@ -153,12 +154,12 @@ class Product{
         if(is_null($id) || empty($id) ){
             return false;
         }
-        $dataProducts = file_get_contents(Config::datasource().'products.json');
-        $products = json_decode($dataProducts);
+        // $dataProducts = file_get_contents(Config::datasource().'products.json');
+        // $products = json_decode($dataProducts);
         // var_dump($products);
         // die();
         $productData = null;
-        foreach($products as  $product){
+        foreach($this->data as  $product){
             if($product->id == $id){
                 $productData = $product;
                 break;
@@ -170,13 +171,34 @@ class Product{
     {
 
     }
-    public function destroy()
+    public function destroy($id = null)
     {
+        if(empty($id)){
+            return;
+        }
+        foreach($this->data as $key=>$product){
+            if($product->id == $id){
+                break;
+            }
+        }
+        unset($this->data[$key]);
+        $this->data = array_values($this->data);
 
+       return $this->insert($this->data);
     }
     public function delete()
     {
 
+    }
+    public function insert()
+    {
+        if(file_exists(Config::datasource().'products.json')){
+             file_put_contents(Config::datasource().'products.json',json_encode($this->data));
+             return true;
+        }else{
+            echo "file not found";
+            return false;
+        }
     }
     
 }

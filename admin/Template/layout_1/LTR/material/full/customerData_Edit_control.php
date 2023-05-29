@@ -1,16 +1,19 @@
 <?php include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
 
-$customersJson = file_get_contents($adminSources.'customers.json');
-$customers = json_decode($customersJson);
+use SOURCE\Customer;
+use SOURCE\Utility\Utility;
+use SOURCE\Utility\Validator;
+
+// $customersJson = file_get_contents($adminSources.'customers.json');
+// $customers = json_decode($customersJson);
 
 $old_img = $_POST['old_img'];
 
-$id = $_POST['id'];
-foreach($customers as $key=> $customer){
-    if($customer->id == $id){
-        break;
-    }
-}
+// foreach($customers as $key=> $customer){
+//     if($customer->id == $id){
+//         break;
+//     }
+// }
 $img;
 if(array_key_exists('img',$_FILES) && !empty($_FILES['img']['name'])){
     $fileName =uniqid().'_'. $_FILES['img']['name'];
@@ -26,23 +29,43 @@ if(file_exists($upload.$old_img)){
 }else{
     $img = $old_img;
 }
-$data = [
-    "id"=>$id,
-    "name"=>$_POST['name'],
-    "phone"=>$_POST['phone'],
-    "email"=>$_POST['email'],
-    "age"=>$_POST['age'],
-    "address"=>$_POST['address'],
-    "img"=>$img,
-    "passwoard"=>$_POST['passwoard'],
-    "username"=>$_POST['username']
-];
 
-$customers[$key] = (object) $data;
-$customersDataEncode = json_encode($customers);
-if(file_exists($adminSources.'customers.json')){
-    $result = file_put_contents($adminSources.'customers.json',$customersDataEncode);
-    if($result){
-        location('customers.php');
-    }
+$id = $_POST['id'];
+$customers = new Customer();
+$customer = $customers->find($id);
+// dd($customer);
+$customer->id = $id;
+$customer->name = Utility::sanitize($_POST['name']);
+$customer->phone = Utility::sanitize($_POST['phone']);
+$customer->email = Utility::sanitize($_POST['email']);
+$customer->age = Utility::sanitize($_POST['age']);
+$customer->address = Utility::sanitize($_POST['address']);
+$customer->img = $img;
+$customer->username = Utility::sanitize($_POST['username']);
+$customer->passwoard = Utility::sanitize($_POST['passwoard']);
+
+$result = $customers->update($customer);
+
+if($result){
+    location('customers.php');
 }
+
+
+// $data = [
+//     "id"=>$id,
+//     "name"=>$_POST['name'],
+//     "phone"=>$_POST['phone'],
+//     "email"=>$_POST['email'],
+//     "age"=>$_POST['age'],
+//     "address"=>$_POST['address'],
+//     "img"=>$img,
+//     "passwoard"=>$_POST['passwoard'],
+//     "username"=>$_POST['username']
+// ];
+
+// $customers[$key] = (object) $data;
+// $customersDataEncode = json_encode($customers);
+// if(file_exists($adminSources.'customers.json')){
+//     $result = file_put_contents($adminSources.'customers.json',$customersDataEncode);
+    
+// }

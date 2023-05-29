@@ -1,16 +1,21 @@
 <?php include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
+use SOURCE\Customer;
 
 
 $id  = $_POST['id'];
-$customersJson = file_get_contents($adminSources.'customers.json');
-$customers = json_decode($customersJson);
-$customerEdit;
-foreach($customers as $customer){
-    if($customer->id == $id){
-        $customerEdit = $customer;
-        break;
-    }
-}
+$customer = new Customer();
+$customerEdit = $customer->edit($id);
+
+// $id  = $_POST['id'];
+// $customersJson = file_get_contents($adminSources.'customers.json');
+// $customers = json_decode($customersJson);
+// $customerEdit;
+// foreach($customers as $customer){
+//     if($customer->id == $id){
+//         $customerEdit = $customer;
+//         break;
+//     }
+// }
 
 ?>
 
