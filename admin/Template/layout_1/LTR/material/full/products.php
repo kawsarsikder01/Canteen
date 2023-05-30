@@ -1,6 +1,5 @@
 
 <?php include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
-
 $productsJson = file_get_contents($adminSources.'products.json');
 $products = json_decode($productsJson);
 session_start();

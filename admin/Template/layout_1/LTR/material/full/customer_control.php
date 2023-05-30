@@ -4,6 +4,7 @@
 use SOURCE\Customer;
 use SOURCE\Utility\Utility;
 use SOURCE\Utility\Validator;
+use Intervention\Image\ImageManager;
 
 
 include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
@@ -11,14 +12,30 @@ include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
 // $customers = json_decode($customersJson);
 
 // dd($_FILES);
-$img;
-$fileName =uniqid().'_'. $_FILES['img']['name'];
-    $target = $_FILES['img']['tmp_name'];
-    $destination = $upload.$fileName;
 
-if(move_uploaded_file($target,$destination)){
-    $img = $fileName;
+
+$manager = new ImageManager(['driver' => 'imagick']);
+$filename = uniqid()."_".$_FILES['img']['name'];
+
+try{
+    $image = $manager->make($_FILES['img']['tmp_name'])
+                    ->save($upload.$filename);
+    $img = $filename ;
+}catch(Intervention\Image\Exception\NotWritableException $e){
+    dd($e);
+}catch(Exception $e){
+    dd($e);
 }
+
+
+// $img;
+// $fileName =uniqid().'_'. $_FILES['img']['name'];
+//     $target = $_FILES['img']['tmp_name'];
+//     $destination = $upload.$fileName;
+
+// if(move_uploaded_file($target,$destination)){
+//     $img = $fileName;
+// }
 
 
 

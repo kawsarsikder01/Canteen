@@ -3,22 +3,38 @@ session_start();
 use SOURCE\Utility\Utility;
 use SOURCE\Utility\Validator;
 use SOURCE\Product;
-
+use Intervention\Image\ImageManager;
 $old_img = $_POST['old_img'];
 //  dd($old_img);
 $img ;
 if(array_key_exists('img',$_FILES) && !empty($_FILES['img']['name']) ){
-    $fileName =uniqid().'_'. $_FILES['img']['name'];
-    $target = $_FILES['img']['tmp_name'];
-    $destination = $upload.$fileName;
-    if(move_uploaded_file($target,$destination)){
-    $img = $fileName;
+
+
+    $manager = new ImageManager(['driver' => 'imagick']);
+    $filename = uniqid()."_".$_FILES['img']['name'];
+    
+    try{
+        $image = $manager->make($_FILES['img']['tmp_name'])
+                        ->save($upload.$filename);
+        $img = $filename ;
+    }catch(Intervention\Image\Exception\NotWritableException $e){
+        dd($e);
+    }catch(Exception $e){
+        dd($e);
     }
-    if(file_exists($upload.$old_img)){
-        unlink($upload.$old_img);
-    }else{
-        dd("Image Not Edit");
-    }
+
+
+    // $fileName =uniqid().'_'. $_FILES['img']['name'];
+    // $target = $_FILES['img']['tmp_name'];
+    // $destination = $upload.$fileName;
+    // if(move_uploaded_file($target,$destination)){
+    // $img = $fileName;
+    // }
+    // if(file_exists($upload.$old_img)){
+    //     unlink($upload.$old_img);
+    // }else{
+    //     dd("Image Not Edit");
+    // }
 }else{
     $img = $old_img;
 }

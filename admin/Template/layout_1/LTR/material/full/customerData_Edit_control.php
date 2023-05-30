@@ -3,29 +3,41 @@
 use SOURCE\Customer;
 use SOURCE\Utility\Utility;
 use SOURCE\Utility\Validator;
+use Intervention\Image\ImageManager;
 
 // $customersJson = file_get_contents($adminSources.'customers.json');
 // $customers = json_decode($customersJson);
-
 $old_img = $_POST['old_img'];
+//  dd($old_img);
+$img ;
+if(array_key_exists('img',$_FILES) && !empty($_FILES['img']['name']) ){
 
-// foreach($customers as $key=> $customer){
-//     if($customer->id == $id){
-//         break;
-//     }
-// }
-$img;
-if(array_key_exists('img',$_FILES) && !empty($_FILES['img']['name'])){
-    $fileName =uniqid().'_'. $_FILES['img']['name'];
-    $target = $_FILES['img']['tmp_name'];
-    $destination = $upload.$fileName;
 
-if(move_uploaded_file($target,$destination)){
-    $img = $fileName;
-}
-if(file_exists($upload.$old_img)){
-    unlink($upload.$old_img);
-}
+    $manager = new ImageManager(['driver' => 'imagick']);
+    $filename = uniqid()."_".$_FILES['img']['name'];
+    
+    try{
+        $image = $manager->make($_FILES['img']['tmp_name'])
+                        ->save($upload.$filename);
+        $img = $filename ;
+    }catch(Intervention\Image\Exception\NotWritableException $e){
+        dd($e);
+    }catch(Exception $e){
+        dd($e);
+    }
+
+
+    // $fileName =uniqid().'_'. $_FILES['img']['name'];
+    // $target = $_FILES['img']['tmp_name'];
+    // $destination = $upload.$fileName;
+    // if(move_uploaded_file($target,$destination)){
+    // $img = $fileName;
+    // }
+    // if(file_exists($upload.$old_img)){
+    //     unlink($upload.$old_img);
+    // }else{
+    //     dd("Image Not Edit");
+    // }
 }else{
     $img = $old_img;
 }

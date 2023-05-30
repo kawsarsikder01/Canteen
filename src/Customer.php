@@ -109,4 +109,14 @@ class Customer{
         }
         return $CustomerData;
     }
+    public function destroy($id)
+    {
+        foreach($this->data as $key=> $customer){
+            if($customer->id == $id){
+                break;
+            }
+        }
+        array_splice($this->data,$key,1);
+        return $this->insert();
+    }
 }
