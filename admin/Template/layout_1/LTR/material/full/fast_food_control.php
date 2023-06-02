@@ -1,69 +1,47 @@
 <?php 
 include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
-$fastFoodJson=file_get_contents($adminSources.'fast_food.json');
-$fastFoodItems = json_decode($fastFoodJson);
+use Intervention\Image\ImageManager;
+use SOURCE\Fastfood;
+use SOURCE\Utility\Utility;
 
-$currentId;
-if($fastFoodItems > 0){
-    $id = [];
-    foreach($fastFoodItems as $fastFoodItem){
-        $id []= $fastFoodItem->id;
-    }
-    sort($id);
-    $lastIndex = count($id)-1;
-    $highestId = $id[$lastIndex];
-    $currentId = $highestId+1;
-}else{
-    $currentId = 1;
-}
-// dd($_FILES);
+$img = null;
+$manager = new ImageManager(['driver' => 'imagick']);
+$filename = uniqid()."_".$_FILES['img']['name'];
 
-$img;
-
-$fileName = uniqid().'_'. $_FILES['img']['name'];
-$target = $_FILES['img']['tmp_name'];
-$destination = $upload.$fileName;
-if(move_uploaded_file($target,$destination)){
-    $img = $fileName;
+try{
+    $image = $manager->make($_FILES['img']['tmp_name'])
+                    ->save($upload.$filename);
+    $img = $filename ;
+}catch(Intervention\Image\Exception\NotWritableException $e){
+    dd($e);
+}catch(Exception $e){
+    dd($e);
 }
 
-$id = $currentId;
-$name = $_POST['name'];
-$type = $_POST['type'];
-$category =$_POST['category'];
-$description = $_POST['description'];
-$cost_price = $_POST['cost-price'];
-$sell_price = $_POST['sell-price'];
-$esale ;
+
+
+
+$product = new Fastfood;
+
+$product->name = Utility::sanitize($_POST['name']);
+$product->type =Utility::sanitize($_POST['type']);
+$product->img = $img;
+$product->category =Utility::sanitize($_POST['category']);
+$product->description =Utility::sanitize($_POST['description']);
+$product->cost_price =Utility::sanitize($_POST['cost-price']);
+$product->sell_price =Utility::sanitize($_POST['sell-price']);
+$product->sell_price =Utility::sanitize($_POST['sell-price']);
 if(isset($_POST['e-sale'])){
-    $esale = $_POST['e-sale'];
+    $product->esale = $_POST['e-sale'];
 }else{
-    $esale = null;
+    $product->esale = null;
 }
-$outdoor ;
 if(isset($_POST['outdoor'])){
-    $outdoor = $_POST['outdoor'];
+    $product->outdoor = $_POST['outdoor'];
 }else{
-    $outdoor = null;
+    $product->outdoor = null;
 }
-$data = [
-    
-    "id"=>$id ,
-    "img"=> $img,
-    "name"=> $name,
-    "type"=> $type,
-    "description"=>$description,
-    "cost_price"=>$cost_price,
-    "sell_price"=> $sell_price ,
-    "category"=>$category,
-    "esale"=> $esale,
-    "outdoor"=> $outdoor
-];
-$fastFoodItems[]=(object)$data;
-$fastFoodDataEncode = json_encode($fastFoodItems);
-if(file_exists($adminSources.'fast_food.json')){
-    $result = file_put_contents($adminSources.'fast_food.json',$fastFoodDataEncode);
-    if($result){
-        location('fast_food.php');
-    }
+$result = $product->create($product);
+if($result){
+    location('fast_food.php');
 }

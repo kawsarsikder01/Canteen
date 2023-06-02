@@ -1,69 +1,46 @@
 <?php 
 include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
-$bakeryItemJson=file_get_contents($adminSources.'bakery_item.json');
-$bakeryItems = json_decode($bakeryItemJson);
+use Intervention\Image\ImageManager;
+use SOURCE\Bakery;
+use SOURCE\Utility\Utility;
 
-$currentId;
-if($bakeryItems > 0){
-    $id = [];
-    foreach($bakeryItems as $bakeryItem){
-        $id []= $bakeryItem->id;
-    }
-    sort($id);
-    $lastIndex = count($id)-1;
-    $highestId = $id[$lastIndex];
-    $currentId = $highestId+1;
-}else{
-    $currentId = 1;
-}
-// dd($_FILES);
+$manager = new ImageManager(['driver' => 'imagick']);
+$filename = uniqid()."_".$_FILES['img']['name'];
 
-$img;
-
-$fileName = uniqid().'_'. $_FILES['img']['name'];
-$target = $_FILES['img']['tmp_name'];
-$destination = $upload.$fileName;
-if(move_uploaded_file($target,$destination)){
-    $img = $fileName;
+try{
+    $image = $manager->make($_FILES['img']['tmp_name'])
+                    ->save($upload.$filename);
+    $img = $filename ;
+}catch(Intervention\Image\Exception\NotWritableException $e){
+    dd($e);
+}catch(Exception $e){
+    dd($e);
 }
 
-$id = $currentId;
-$name = $_POST['name'];
-$type = $_POST['type'];
-$category =$_POST['category'];
-$description = $_POST['description'];
-$cost_price = $_POST['cost-price'];
-$sell_price = $_POST['sell-price'];
-$esale ;
+
+
+
+$product = new Bakery;
+
+$product->name = Utility::sanitize($_POST['name']);
+$product->type =Utility::sanitize($_POST['type']);
+$product->img = $img;
+$product->category =Utility::sanitize($_POST['category']);
+$product->description =Utility::sanitize($_POST['description']);
+$product->cost_price =Utility::sanitize($_POST['cost-price']);
+$product->sell_price =Utility::sanitize($_POST['sell-price']);
+$product->sell_price =Utility::sanitize($_POST['sell-price']);
 if(isset($_POST['e-sale'])){
-    $esale = $_POST['e-sale'];
+    $product->esale = $_POST['e-sale'];
 }else{
-    $esale = null;
+    $product->esale = null;
 }
-$outdoor ;
 if(isset($_POST['outdoor'])){
-    $outdoor = $_POST['outdoor'];
+    $product->outdoor = $_POST['outdoor'];
 }else{
-    $outdoor = null;
+    $product->outdoor = null;
 }
-$data = [
-    
-    "id"=>$id ,
-    "img"=> $img,
-    "name"=> $name,
-    "type"=> $type,
-    "description"=>$description,
-    "cost_price"=>$cost_price,
-    "sell_price"=> $sell_price ,
-    "category"=>$category,
-    "esale"=> $esale,
-    "outdoor"=> $outdoor
-];
-$bakeryItems[]=(object)$data;
-$bakeryItemsDataEncode = json_encode($bakeryItems);
-if(file_exists($adminSources.'bakery_item.json')){
-    $result = file_put_contents($adminSources.'bakery_item.json',$bakeryItemsDataEncode);
-    if($result){
-        location('bakery_item.php');
-    }
+$result = $product->create($product);
+if($result){
+    location('bakery_item.php');
 }

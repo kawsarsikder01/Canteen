@@ -1,16 +1,9 @@
 <?php include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
 
+use SOURCE\Fastfood;
 $id  = $_POST['id'];
-$productsJson = file_get_contents($adminSources.'fast_food.json');
-$products = json_decode($productsJson);
-$productView;
-foreach($products as $product){
-    if($product->id == $id){
-        $productView = $product;
-        break;
-    }
-}
-
+$product = new Fastfood;
+$productView = $product->find($id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -378,8 +371,8 @@ include_once($partialAdmin.'head.php');
                 <p>Sell Price : <?=$productView->sell_price?></p>
                 <p>Category :<?=$productView->category?></p>
                 <p>Type : <?=$productView->type?></p>
-                <p>E-Sale : <?php if(isset($product->esale)){ echo "Enabled"; }else{ echo "Disabled"; } ?></p>
-                <p>Outdoor : <?php if(isset($product->outdoor)){ echo "Enabled"; }else{ echo "Disabled"; } ?></p>
+                <p>E-Sale : <?php if(isset($productView->esale)){ echo "Enabled"; }else{ echo "Disabled"; } ?></p>
+                <p>Outdoor : <?php if(isset($productView->outdoor)){ echo "Enabled"; }else{ echo "Disabled"; } ?></p>
                 <p>Description : <?=$productView->description?></p>
                 
             </div>

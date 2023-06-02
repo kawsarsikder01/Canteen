@@ -1,15 +1,19 @@
 <?php include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
-
+use SOURCE\Bakery;
 $id = $_POST['id'];
-$productsJson = file_get_contents($adminSources.'bakery_item.json');
-$products = json_decode($productsJson);
-$productData ;
-foreach($products as $product){
-    if($product->id == $id){
-        $productData = $product;
-        break;
-    }
-}
+
+$product = new Bakery;
+$productData = $product->edit($id);
+// dd($productData);
+// $productsJson = file_get_contents($adminSources.'bakery_item.json');
+// $products = json_decode($productsJson);
+// $productData ;
+// foreach($products as $product){
+//     if($product->id == $id){
+//         $productData = $product;
+//         break;
+//     }
+// }
 ?>
 
 

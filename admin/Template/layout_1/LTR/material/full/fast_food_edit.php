@@ -1,15 +1,10 @@
 <?php include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
+use SOURCE\Fastfood;
 
 $id = $_POST['id'];
-$productsJson = file_get_contents($adminSources.'fast_food.json');
-$products = json_decode($productsJson);
-$productData ;
-foreach($products as $product){
-    if($product->id == $id){
-        $productData = $product;
-        break;
-    }
-}
+
+$product = new Fastfood;
+$productData = $product->edit($id);
 ?>
 
 

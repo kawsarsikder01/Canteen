@@ -1,15 +1,19 @@
 <?php include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
-    
+    use SOURCE\Banner;
     $id  = $_POST['id'];
-    $bannerImageJson = file_get_contents($adminSources.'banner.json');
-    $bannerImageData = json_decode($bannerImageJson);
-    $bannerData ;
-foreach($bannerImageData as $key=> $banner){
-    if($banner->id == $id){
-       $bannerData = $banner;
-        break;
-    }
-}
+    $data = new Banner;
+    $bannerData = $data->find($id);
+    $bannerImageData = $data->data()
+    
+//     $bannerImageJson = file_get_contents($adminSources.'banner.json');
+//     $bannerImageData = json_decode($bannerImageJson);
+//     $bannerData ;
+// foreach($bannerImageData as $key=> $banner){
+//     if($banner->id == $id){
+//        $bannerData = $banner;
+//         break;
+//     }
+// }
 
 ?>
 

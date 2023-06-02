@@ -1,17 +1,24 @@
 <?php 
 
 include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
-$drinksJson=file_get_contents($adminSources.'drinks.json');
-$drinkItems = json_decode($drinksJson);
+use SOURCE\Utility\Utility;
+use SOURCE\Drink;
+use Intervention\Image\ImageManager;
+
 $old_img = $_POST['old_img'];
 $img;
 if(array_key_exists('img',$_FILES) && !empty($_FILES['img']['name']) ){
-    $fileName = uniqid().'_'. $_FILES['img']['name'];
-    $target = $_FILES['img']['tmp_name'];
-    $destination = $upload.$fileName;
-
-    if(move_uploaded_file($target,$destination)){
-        $img = $fileName;
+    $manager = new ImageManager(['driver' => 'imagick']);
+    $filename = uniqid()."_".$_FILES['img']['name'];
+    
+    try{
+        $image = $manager->make($_FILES['img']['tmp_name'])
+                        ->save($upload.$filename);
+        $img = $filename ;
+    }catch(Intervention\Image\Exception\NotWritableException $e){
+        dd($e);
+    }catch(Exception $e){
+        dd($e);
     }
     if(file_exists($upload.$old_img)){
         unlink($upload.$old_img);
@@ -19,44 +26,30 @@ if(array_key_exists('img',$_FILES) && !empty($_FILES['img']['name']) ){
 }else{
     $img = $old_img;
 }
-
-
-$esale ;
-if(isset($_POST['e-sale'])){
-    $esale = $_POST['e-sale'];
-}else{
-    $esale = null;
-}
-$outdoor ;
-if(isset($_POST['outdoor'])){
-    $outdoor = $_POST['outdoor'];
-}else{
-    $outdoor = null;
-}
 $id = $_POST['id'];
+$products = new Drink;
+$product = $products->find($id);
+$product->id = $id;
+$product->img = $img;
+$product->name = Utility::sanitize($_POST['name']);
+$product->type = Utility::sanitize($_POST['type']);
+$product->description = Utility::sanitize($_POST['description']);
+$product->cost_price = Utility::sanitize($_POST['cost-price']);
+$product->sell_price = Utility::sanitize($_POST['sell-price']);
+$product->category = Utility::sanitize($_POST['category']);
 
-$data = [
-    "id"=>$_POST['id'] ,
-    "img"=> $img,
-    "name"=> $_POST['name'],
-    "type"=> $_POST['type'],
-    "description"=>$_POST['description'],
-    "cost_price"=>$_POST['cost-price'],
-    "sell_price"=> $_POST['sell-price'] ,
-    "category"=>$_POST['category'],
-    "esale"=> $esale,
-    "outdoor"=> $outdoor
-];
-foreach($drinkItems as $key=> $drinkItem){
-    if($drinkItem->id == $id){
-        break;
-    }
+if(isset($_POST['e-sale'])){
+    $product->esale = $_POST['e-sale'];
+}else{
+    $product->esale = null;
 }
-$drinkItems[$key]=(object)$data;
-$drinksDataEncode = json_encode($drinkItems);
-if(file_exists($adminSources.'drinks.json')){
-$result = file_put_contents($adminSources.'drinks.json',$drinksDataEncode);
+if(isset($_POST['outdoor'])){
+    $product->outdoor = $_POST['outdoor'];
+}else{
+    $product->outdoor = null;
+}
+$result = $products->update($product);
+ 
 if($result){
     location('drinks.php');
-}
 }
