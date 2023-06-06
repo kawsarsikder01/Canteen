@@ -15,13 +15,18 @@ class Product{
     public $esale ;
     public $outdoor ;
     private $data;
+    private $conn;
+    private $user = 'root';
+    private $password = '';
+    private $database = 'campus_canteen';
 
 
 
     public function __construct(){
-        $dataProducts = file_get_contents(Config::datasource().'products.json');
-        $this->data = json_decode($dataProducts);
-        // dd( $this->jsonFormat);
+       
+       
+            $this->connectdb();
+        
         
     }
 
@@ -29,9 +34,14 @@ class Product{
     //reading all
     public function index()
     {
-        // $dataProducts = file_get_contents(Config::datasource().'products.json');
-        // $products = json_decode($dataProducts);
-        return $this->data;
+        // $stme = Config::connectdb();
+        $query = "SELECT * FROM products";
+        $stmt = $this->conn->prepare($query);
+        // dd($this->conn);
+        $stmt->execute();
+        // $stmt->setFetchMode(\PDO::FETCH_CLASS, "\BITM\SEIP12\Slider");
+       $products =  $stmt->fetchAll(\PDO::FETCH_OBJ);
+       return $products;
     }
 
     public function create()
@@ -55,6 +65,27 @@ class Product{
         return $this->insert(); //$result;
 
     }
+    public function store2($data){
+        $stmt = $this->conn->prepare('INSERT INTO products(uuid,name,type,category,description,costPrice,sellPrice,img,esale,outdoor)VALUES(:uuid,:name,:type,:category,:description,:costPrice,:sellPrice,:img,:esale,:outdoor)');
+        $stmt->bindParam(':uuid',$data->uuid,\PDO::PARAM_STR);
+        $stmt->bindParam(':name',$data->name,\PDO::PARAM_STR);
+        $stmt->bindParam(':type',$data->type,\PDO::PARAM_STR);
+        $stmt->bindParam(':category',$data->category,\PDO::PARAM_STR);
+        $stmt->bindParam(':description',$data->description,\PDO::PARAM_STR);
+        $stmt->bindParam(':costPrice',$data->costPrice,\PDO::PARAM_STR);
+        $stmt->bindParam(':sellPrice',$data->sellPrice,\PDO::PARAM_STR);
+        $stmt->bindParam(':img',$data->img,\PDO::PARAM_STR);
+        $stmt->bindParam(':esale',$data->esale,\PDO::PARAM_STR);
+        $stmt->bindParam(':outdoor',$data->outdoor,\PDO::PARAM_STR);
+
+        try{
+            $stmt->execute();
+            return true;
+        }catch( \Exception $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
 
     public function show($id)
     {
@@ -69,6 +100,16 @@ class Product{
             }
         }
         return $productView;
+    }
+    public function show2($id)
+    {
+        $query = "SELECT * FROM products WHERE id =:id";
+        $stmt = $this->conn->prepare($query);
+        $data = [
+            ":id"=>$id
+        ];
+        $stmt->execute($data);
+      return  $result = $stmt->fetch(\PDO::FETCH_OBJ);
     }
     public function highestId()
     {
@@ -131,6 +172,31 @@ class Product{
         // }
         return $this->insert();
     }
+    public function update2($data)
+    {
+        $query = "UPDATE products SET name=:name,type=:type,category=:category,description=:description,costPrice=:costPrice,sellPrice=:sellPrice,img=:img,esale=:esale,outdoor=:outdoor WHERE id=:id ";
+        $stmt = $this->conn->prepare($query);
+        $data = [
+            ":name"=>$data->name,
+            ":type"=>$data->type,
+            ":category"=>$data->category,
+            ":description"=>$data->description,
+            ":costPrice"=>$data->costPrice,
+            ":sellPrice"=>$data->sellPrice,
+            ":img"=>$data->img,
+            ":esale"=>$data->esale,
+            ":outdoor"=>$data->outdoor,
+            ":id"=>$data->id
+        ];
+        try{
+            $stmt->execute($data);
+            return true;
+        }
+        catch(\Exception $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
     // public function edit_data($id,$name,$type,$category,$description,$costPrice,$sellPrice,$img,$esale,$outdoor)
     // {
        
@@ -186,6 +252,22 @@ class Product{
 
        return $this->insert($this->data);
     }
+    public function destroy2($id)
+    {
+        $query = "DELETE FROM products WHERE id=:id";
+        $stmt = $this->conn->prepare($query);
+        $data = [
+            ":id"=>$id
+        ];
+        try{
+            $stmt->execute($data);
+            return true;
+        }catch(\Exception $e){
+            echo $e->getMessage();
+            return false;
+        }
+
+    }
     public function delete()
     {
 
@@ -198,6 +280,19 @@ class Product{
         }else{
             echo "file not found";
             return false;
+        }
+    }
+    private function connectdb()
+    {
+        try{
+           return $this->conn = new \PDO('mysql:host=localhost; dbname=campus_canteen; charset=utf8mb4;', $this->user, $this->password );
+            // if($this->conn){
+            //     // dd("success");
+            // };
+            // return true;
+        }catch(\Exception $e){
+             echo$e->getMessage();
+            //  return false;
         }
     }
     

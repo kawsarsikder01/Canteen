@@ -8,7 +8,7 @@ $id  =Utility::sanitize($_POST['id']);
 
 
 $product = new Product;
-$result = $product->destroy($id);
+$result = $product->destroy2($id);
 
 if($result){
             location('products.php');

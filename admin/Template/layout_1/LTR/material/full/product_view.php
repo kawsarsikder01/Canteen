@@ -6,7 +6,7 @@ use SOURCE\Utility\Utility;
 $id = Utility::sanitize($_GET['id']);
 if(!Validator::empty($id)){
     $products = new Product();
-    $productView = $products->show($id);
+    $productView = $products->show2($id);
 
 }else{
     dd("Id cannot be null or empty");

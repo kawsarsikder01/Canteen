@@ -48,26 +48,27 @@ if(array_key_exists('img',$_FILES) && !empty($_FILES['img']['name']) ){
 // }
 $id = Utility::sanitize($_POST['id']);
 $products = new Product;
-$product = $products->find($id);
-$product->id =Utility::sanitize ($_POST['id']);
-$product->name =Utility::sanitize ($_POST['name']);
-$product->type =Utility:: sanitize ($_POST['type']);
-$product->category =Utility::sanitize ($_POST['category']);
-$product->description =Utility::sanitize ($_POST['description']);
-$product->costPrice =Utility::sanitize ($_POST['cost-price']);
-$product->sellPrice = Utility:: sanitize ($_POST['sell-price']);
-$product->img = $img;
-$product->esale;
+// $product = $products->find($id);
+// dd($products);
+$products->id =Utility::sanitize ($_POST['id']);
+$products->name =Utility::sanitize ($_POST['name']);
+$products->type =Utility:: sanitize ($_POST['type']);
+$products->category =Utility::sanitize ($_POST['category']);
+$products->description =Utility::sanitize ($_POST['description']);
+$products->costPrice =Utility::sanitize ($_POST['cost-price']);
+$products->sellPrice = Utility:: sanitize ($_POST['sell-price']);
+$products->img = $img;
+$products->esale;
 if($_POST['e-sale']) {
-    $product->esale =Utility::sanitize ($_POST['e-sale']);
+    $products->esale =Utility::sanitize ($_POST['e-sale']);
 }else{
-    $product->esale = null;
+    $products->esale = null;
 }
-$product->outdoor;
+$products->outdoor;
 if($_POST['outdoor']) {
-    $product->outdoor = Utility::sanitize ($_POST['outdoor']);
+    $products->outdoor = Utility::sanitize ($_POST['outdoor']);
 }else{
-    $product->outdoor = null;
+    $products->outdoor = null;
 }
 
 
@@ -86,7 +87,7 @@ if($_POST['outdoor']) {
 
  //$data = $product->edit_data($id,$name,$type,$category,$description,$costPrice,$sellPrice,$img,$esale,$outdoor);
 //  dd($data);
-$result = $products->update($product);
+$result = $products->update2($products);
 // $productsJson = file_get_contents($adminSources.'products.json');
 // $products = json_decode($productsJson);
 // foreach($products as $key=> $product){
@@ -104,5 +105,7 @@ if($result){
     $_SESSION['message'] = $message;
     // set_session('message',$message);
    location('products.php');
+}else{
+    echo 'failed';
 }
 ?>

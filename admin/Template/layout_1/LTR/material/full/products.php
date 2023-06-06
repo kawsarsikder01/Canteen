@@ -1,8 +1,27 @@
 
 <?php include_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config.php');
-$productsJson = file_get_contents($adminSources.'products.json');
-$products = json_decode($productsJson);
+
+use SOURCE\Product;
+use SOURCE\Config;
+
+// $productsJson = file_get_contents($adminSources.'products.json');
+// $productData = new Product;
+// $products = $productData->index();
+    //  $user = 'root';
+    //  $password = '';
+    //  $database = 'campus_canteen';
+    //  $pdo_conn = new PDO( "mysql:host=localhost;dbname=$database;", $user, $password );
+    //  dd($pdo_conn);
+
+
+// $query = "SELECT * FROM products";
+// $stmt = $pdo_conn->prepare($query);
+// $stmt->execute();
+// // $stmt->setFetchMode(\PDO::FETCH_CLASS, "\BITM\SEIP12\Slider");
+// $products =  $stmt->fetchAll(PDO::FETCH_OBJ);
 session_start();
+$productData = new Product;
+$products = $productData->index();
 
 ?>
 

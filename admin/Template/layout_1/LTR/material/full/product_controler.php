@@ -36,6 +36,7 @@ $product->description = Utility::sanitize ($_POST['description']);
 $product->costPrice = Utility::sanitize ($_POST['cost-price']);
 $product->sellPrice = Utility::sanitize ($_POST['sell-price']);
 $product->img = $img;
+$product->uuid = uniqid();
 // dd($img);
 $product->esale ;
  if(isset($_POST['e-sale'])){
@@ -55,7 +56,9 @@ $product->category = Utility::sanitize ($_POST['category']);
 // $products = json_decode($productsJson);
 //$data = $product->data($name,$type,$description,$cost_price,$sell_price,$img,$e_sale,$outdoor,$category);
 // dd($data);
-$result = $product->store($product);
+
+  $result = $product->store2($product);
+
 
 if($result){
    location('products.php');

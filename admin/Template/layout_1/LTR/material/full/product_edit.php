@@ -6,7 +6,7 @@ use SOURCE\Product;
 $id = Utility::sanitize ($_POST['id']);
 if(!Validator::empty($id)){
     $product = new Product() ;
-  $productEdit =  $product->edit($id);
+  $productEdit =  $product->show2($id);
 }else{
     dd("id cannot be null or empty");
 }
